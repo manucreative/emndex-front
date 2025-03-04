@@ -30,9 +30,7 @@ const GlowBoxesSection: React.FC<GlowBoxProps> = ({children}) => {
           description:
             "We offer the best web development for all kinds. We develop outstanding software to help your business grow.",
           icon: "/assets/img/icons/icon8.png",
-          glow: "shadow-[0_0_15px_rgba(255,20,243,0.733),5px_-5px_20px_rgba(255,20,147,0.5)] hover:shadow-[0_0_20px_rgba(20,255,32,0.73),5px_-5px_20px_rgba(169,20,255,0.5)]",
-          gradient:
-            "before:bg-gradient-to-b before:from-pink-500 before:to-[#09091f]",
+          glow: "shadow-[0_2px_10px_rgba(0,0,0,0.73),-2px_3px_4px_rgba(20,255,243,0.6)]",
           afterGlow:
             "after:bg-[radial-gradient(circle,rgba(16,238,46,0.22),rgba(22,11,41,0.17)_70%)]",
         },
@@ -41,9 +39,7 @@ const GlowBoxesSection: React.FC<GlowBoxProps> = ({children}) => {
           description:
             "We analyze your web data to give meaningful insights that help businesses grow and make informed decisions.",
           icon: "/assets/img/icons/icon8.png",
-          glow: "shadow-[0_0_15px_rgba(28,255,20,0.733),5px_-5px_20px_rgba(255,20,147,0.5)] hover:shadow-[0_0_20px_rgba(20,255,32,0.73),5px_-5px_20px_rgba(169,20,255,0.5)]",
-          gradient:
-            "before:bg-gradient-to-b before:from-cyan-400 before:to-[#09091f]",
+          glow: "shadow-[0_2px_10px_rgba(0,0,0,0.73),-2px_3px_4px_rgba(255,231,20,0.6)]",
           afterGlow:
             "after:bg-[radial-gradient(circle,rgba(97,16,238,0.22),rgba(22,11,41,0.17)_70%)]",
         },
@@ -52,9 +48,7 @@ const GlowBoxesSection: React.FC<GlowBoxProps> = ({children}) => {
           description:
             "We create visually appealing and brand-focused designs to help your business stand out.",
           icon: "/assets/img/icons/icon8.png",
-          glow: "shadow-[0_0_15px_rgba(255,20,243,0.733),5px_-5px_20px_rgba(255,20,147,0.5)] hover:shadow-[0_0_20px_rgba(20,255,32,0.73),5px_-5px_20px_rgba(169,20,255,0.5)]",
-          gradient:
-            "before:bg-gradient-to-b before:from-pink-500 before:to-[#09091f]",
+          glow: "shadow-[0_2px_10px_rgba(0,0,0,0.73),-2px_3px_4px_rgba(255,20,165,0.6)]",
           afterGlow:
             "after:bg-[radial-gradient(circle,rgba(16,238,46,0.22),rgba(22,11,41,0.17)_70%)]",
         },
@@ -65,15 +59,15 @@ const GlowBoxesSection: React.FC<GlowBoxProps> = ({children}) => {
             { currentPage == "about" &&
               children
               }
-            <div className="flex flex-col gap-12 w-full lg:w-1/2 px-4">
+            <div className="flex flex-col gap-12 w-full lg:w-1/2 px-4 py-4">
               {services.map((service, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.6, delay: index * 0.2 }}
-                  className={`relative bg-transparent border border-transparent rounded-lg flex flex-col justify-center items-center text-center p-6 overflow-hidden transition-shadow duration-300 cursor-pointer 
-                  ${service.glow} before:content-[''] before:absolute before:inset-0 ${service.gradient} before:rounded-lg before:-z-10 
+                  className={`relative bg-transparent border border-transparent rounded-3xl flex flex-col justify-center items-center text-center p-6 overflow-hidden transition-shadow duration-300 cursor-pointer 
+                  hover:shadow-[0_0_15px_rgba(28,255,20,0.733),5px_-5px_20px_rgba(255,20,147,0.5)] ${service.glow} before:content-[''] before:absolute before:inset-0  before:rounded-lg before:-z-10 
                   after:content-[''] after:absolute after:w-[250px] after:h-[200px] ${service.afterGlow} after:rounded-full 
                   after:-top-10 after:-right-10 after:pointer-events-none after:z-0`}
                 >

@@ -24,9 +24,9 @@ function AppFooter() {
 
       {/* Footer Section */}
       <footer 
-  className="relative min-h-[400px] flex flex-col justify-center items-center bg-gradient-to-b from-[rgb(9,3,26)] via-[#18041e] to-[rgb(42,3,68)] text-white overflow-hidden px-4"
+  className="relative min-h-[400px] flex flex-col justify-center items-center bg-gradient-to-b from-[rgb(11,2,63)] via-[rgb(5,9,46)] to-[rgb(9,3,26)] text-white overflow-hidden px-4"
 >
-  <div className="container mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
+  <div className="container mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 py-4">
     
     {/* Company Info */}
     <div>

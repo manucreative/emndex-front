@@ -21,7 +21,7 @@ return (
             <LaunchPageSection />
         </section>
 
-        <section className="relative min-h-[600px] flex justify-center items-center bg-gradient-to-b from-[rgb(9,3,26)] via-[#18041e] to-[rgb(9,3,26)] text-white overflow-hidden px-4">
+        <section className="relative min-h-[600px] flex justify-center items-center bg-gradient-to-b from-[rgb(9,3,26)] via-[rgb(38,39,3)] to-[rgb(9,3,26)] text-white overflow-hidden px-4">
         <div className="container mx-auto  py-8">
             <div className="text-center mb-4">
                 <h3 className="gradient-underline text-3xl font-bold">About Us</h3>
@@ -35,15 +35,19 @@ return (
               <AboutusContent />
           </motion.div>
             </GlowBoxesSection>
+            <hr className="neon-gradient-line mx-auto sm:w-1/8" />
         </div>
+        
         </section>
 
-        <section className="relative min-h-[600px] flex justify-center items-center bg-gradient-to-b from-[rgb(9,3,26)] via-[#18041e] to-[#0a0a32] text-white overflow-hidden px-4">
+        <section className="relative min-h-[600px] flex justify-center items-center bg-gradient-to-b from-[rgb(9,3,26)] via-[rgb(40,3,54)] to-[rgb(9,3,26)] text-white overflow-hidden px-4">
             <FeaturesSection />
         </section>
 
-        <section className="relative min-h-[600px] flex justify-center items-center bg-gradient-to-b from-[rgb(9,3,26)] via-[#18041e] to-[rgb(9,3,26)] text-white overflow-hidden px-4">
+        <section className="relative min-h-[600px] flex justify-center items-center bg-gradient-to-b from-[rgb(9,3,26)] via-[rgb(3,7,44)] to-[rgb(9,3,26)] text-white overflow-hidden px-4">
+            
             <FAQSection />
+            
     </section>
     </div>
 );

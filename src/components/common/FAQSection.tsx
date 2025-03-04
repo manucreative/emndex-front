@@ -35,6 +35,8 @@ export default function FAQSection() {
   return (
     <div className="w-full max-w-7xl mx-auto px-6 py-12">
       <h2 className="text-center text-xl font-semibold text-pink-500 uppercase">EMNDEX FAQs</h2>
+      
+      <hr className="neon-gradient-line mx-auto sm:w-1/8" />
       <h3 className="text-center text-3xl font-bold text-white mt-2">
         You've got here? greate, we've got all your answers  <br />— having questions in your mind?
       </h3>
