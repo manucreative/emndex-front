@@ -1,6 +1,28 @@
 import { motion } from "framer-motion";
+import { ReactNode, useEffect, useState } from "react";
+import { useLocation } from "react-router";
 
-const GlowBoxesSection = () => {
+interface GlowBoxProps {
+  children?: ReactNode;
+}
+
+const GlowBoxesSection: React.FC<GlowBoxProps> = ({children}) => {
+
+  const [currentPage, setCurrentPage] = useState("");
+  const location = useLocation();
+
+  const handleLocations = () =>{
+    if(location.pathname === "/home"){
+      setCurrentPage("home");
+    }
+    else if(location.pathname === "/home/about"){
+      setCurrentPage("about");
+    }
+  }
+
+  useEffect(()=>{
+    handleLocations();
+  },[])
 
     const services = [
         {
@@ -38,9 +60,12 @@ const GlowBoxesSection = () => {
         },
       ];
       return (
-          <div className="relative flex flex-col lg:flex-row justify-center items-center w-full max-w-6xl mx-auto py-5">
+          <div className="relative flex flex-col lg:flex-row justify-center items-center w-full px-1 mx-auto py-5">
             {/* Left Side - Service Cards */}
-            <div className="flex flex-col gap-9 w-full lg:w-1/2 px-4">
+            { currentPage == "about" &&
+              children
+              }
+            <div className="flex flex-col gap-12 w-full lg:w-1/2 px-4">
               {services.map((service, index) => (
                 <motion.div
                   key={index}
@@ -53,7 +78,7 @@ const GlowBoxesSection = () => {
                   after:-top-10 after:-right-10 after:pointer-events-none after:z-0`}
                 >
                   <div className="w-full flex justify-between items-center">
-                    <h4 className="text-2xl font-bold text-[#00e40b] flex items-center gap-2">
+                    <h4 className="bg-gradient-to-l from-[#7FDBFF] to-[#00f514] bg-clip-text text-transparent text-2xl font-bold">
                       {service.title}
                     </h4>
                     <motion.img 
@@ -74,40 +99,11 @@ const GlowBoxesSection = () => {
                 </motion.div>
               ))}
             </div>
-      
-            {/* Right Side - Image and Text */}
-            <motion.div
-              initial={{ opacity: 0, x: 100 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="w-full lg:w-1/2 px-4 mt-6 lg:mt-0"
-            >
-              <div className="bg-[rgba(33,3,73,0.4)] border border-[#0fbaee] rounded-lg p-6 shadow-lg text-center">
-                <motion.img
-                  className="mb-5 w-full max-w-[500px] mx-auto"
-                  src="/assets/img/services/tech-phone.png"
-                  alt="Tech Phone"
-                  animate={{
-                    rotateY: [0, 360],
-                  }}
-                  transition={{
-                    duration: 8,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                />
-                <div className="font-bold text-lg">
-                  <span className="bg-gradient-to-l from-[#7FDBFF] to-[#00f514] bg-clip-text text-transparent text-2xl font-bold">
-                    We develop new web applications, analyze your web data, and fix
-                    broken websites.
-                  </span>
-                </div>
-                <button className="z-10 neon-button relative px-6 py-3 text-lg font-bold uppercase tracking-wider text-white bg-transparent rounded-full overflow-hidden transition-transform duration-300 hover:scale-105 mt-6 focus:outline-none">
-                  Learn More
-                </button>
-              </div>
-            </motion.div>
-          </div>
+                    {/* Right Side - Image and Text */}
+              { currentPage == "home" &&
+              children
+              }
+        </div>
       );
 };
 

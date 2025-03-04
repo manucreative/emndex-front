@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router"; // useLocation for active route detection
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
@@ -8,11 +8,13 @@ const navItems = [
   { name: "About", path: "/home/about" },
   { name: "Services", path: "/home/services" },
   { name: "Features", path: "/home/features" },
+  { name: "FAQs", path: "/home/faqs" },
   { name: "Contact", path: "/home/contact" },
 ];
 
 function AppHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation(); // Get current path
 
   return (
     <header className="fixed top-0 left-0 w-full bg-[#0a0a32] bg-opacity-90 shadow-lg z-50">
@@ -24,23 +26,38 @@ function AppHeader() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-6">
-          {navItems.map((item, index) => (
-            <Link
-              key={index}
-              to={item.path}
-              className="relative text-white text-lg font-medium neon-button px-4 py-1 transition duration-300"
-            >
-              {item.name}
-            </Link>
-          ))}
+          {navItems.map((item, index) => {
+            const isActive = location.pathname === item.path;
+            return (
+              <Link
+                key={index}
+                to={item.path}
+                className={`relative text-white text-lg font-medium neon-button px-4 py-1 transition duration-300 ${
+                  isActive
+                    ? "active-item-glow" // Add glow effect when active
+                    : ""
+                }`}
+              >
+                {item.name}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Social Media Links */}
         <div className="hidden md:flex space-x-4">
-          <Link to="#" className="text-white text-xl hover:text-blue-400"><i className="fa fa-facebook"></i></Link>
-          <Link to="#" className="text-white text-xl hover:text-blue-300"><i className="fa fa-twitter"></i></Link>
-          <Link to="#" className="text-white text-xl hover:text-pink-500"><i className="fa fa-instagram"></i></Link>
-          <Link to="#" className="text-white text-xl hover:text-red-400"><i className="fa fa-dribbble"></i></Link>
+          <Link to="#" className="text-white text-xl hover:text-blue-400">
+            <i className="fa fa-facebook"></i>
+          </Link>
+          <Link to="#" className="text-white text-xl hover:text-blue-300">
+            <i className="fa fa-twitter"></i>
+          </Link>
+          <Link to="#" className="text-white text-xl hover:text-pink-500">
+            <i className="fa fa-instagram"></i>
+          </Link>
+          <Link to="#" className="text-white text-xl hover:text-red-400">
+            <i className="fa fa-dribbble"></i>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -62,16 +79,21 @@ function AppHeader() {
             className="absolute top-full left-0 w-full bg-[#0a0a32] shadow-md py-6"
           >
             <div className="flex flex-col items-center space-y-4">
-              {navItems.map((item, index) => (
-                <Link
-                  key={index}
-                  to={item.path}
-                  className="text-white text-lg font-medium py-2"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
+              {navItems.map((item, index) => {
+                const isActive = location.pathname === item.path;
+                return (
+                  <Link
+                    key={index}
+                    to={item.path}
+                    className={`text-white text-lg font-medium py-2 ${
+                      isActive ? "shadow-lg shadow-pink-500/50 neon-glow" : ""
+                    }`}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                );
+              })}
             </div>
           </motion.div>
         )}
@@ -81,4 +103,3 @@ function AppHeader() {
 }
 
 export default AppHeader;
-

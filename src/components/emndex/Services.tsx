@@ -6,7 +6,7 @@ const services = [
     id: 1,
     title: "Software Development",
     description:
-      "We build scalable web applications from scratch to large-scale systems within a short period. Our customers are always happy.",
+      "We build scalable web applications from scratch to large-scale systems within a short period. Our customers are always happy. We thoroughly analyze your application data to ensure everything is well-structured and optimized.",
     icon: "/assets/img/icons/icon11.png",
     bgStyle: {
       borderTopLeftRadius: "40px",
