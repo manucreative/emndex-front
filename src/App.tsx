@@ -3,6 +3,8 @@ import { ScrollToTop } from './components/common/ScrollToTop';
 import AppMainLayout from './layout/AppMainLayout';
 import Loader from "./components/common/Loader";
 import { Suspense, lazy } from "react";
+import FaviconUpdater from "./components/common/FaviconUpdater";
+import NotFound from "./pages/OtherPage/NotFound";
 
 // ✅ Lazy load pages
 const HomeLouncher = lazy(() => import("./pages/Louncher/HomeLouncher"));
@@ -15,6 +17,7 @@ const LoadFaqs = lazy(() => import("./pages/Faqs/LoadFaqs"));
 function App() {
   return (
     <Router>
+      <FaviconUpdater />
       <ScrollToTop />
       
       {/* ✅ Global Suspense to wrap the whole Routes */}
@@ -29,6 +32,7 @@ function App() {
             <Route path="/home/contact" element={<LoadContactForm />} />
             <Route path="/home/faqs" element={<LoadFaqs />} />
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
     </Router>

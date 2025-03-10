@@ -1,6 +1,10 @@
 import { motion } from "framer-motion";
 import { Typewriter } from 'react-simple-typewriter';
+import { useConfig } from "../../Profiders/ConfigProvider";
 const LaunchPageSection: React.FC = () =>{
+  const config = useConfig();
+  const typeData = config?.["home typewriter"] ? config?.["home typewriter"].split(",") : [];
+  const configUrl: string = import.meta.env.VITE_API_CONFIG_URL;
 
     return (
         <div className="container mx-auto px-4 relative z-10">
@@ -11,12 +15,11 @@ const LaunchPageSection: React.FC = () =>{
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8 }}
         className="neon-text-2 text-4xl sm:text-5xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 text-transparent bg-clip-text mb-10">
+          {config?.["home typewriter"] && (
           <Typewriter
-              words={[
-              "Emndex Solution Ltd",
-              "We give the best Tech Service",
-              "Request a quote now"
-              ]}
+              words={
+                typeData
+              }
               loop={true}
               cursor
               cursorStyle="|"
@@ -24,6 +27,7 @@ const LaunchPageSection: React.FC = () =>{
               deleteSpeed={50}
               delaySpeed={1500}
               />
+            )}
         </motion.h1>
 
         <motion.img 
@@ -31,7 +35,7 @@ const LaunchPageSection: React.FC = () =>{
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 2 }}
           className="mb-5 w-full sm:w-auto mx-auto" 
-          src="/assets/img/services/vector2.jpg" 
+          src={`${configUrl}/${config['advert banner']}`} 
           alt="Vector Design" 
         />
 
@@ -49,7 +53,7 @@ const LaunchPageSection: React.FC = () =>{
             ease: "easeInOut",
           }}
           >
-            We Give the Best Solutions in Web Design and Development, Graphic Design, Data Analysis
+            {config['slide text']}
           </motion.span>
         </div>
 

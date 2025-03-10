@@ -1,16 +1,19 @@
 import PageBreadcrumb from "../../components/common/PageBreadcrumb";
 import PageMeta from "../../components/common/PageMeta";
 import About from "../../components/emndex/About";
+import { useConfig } from "../../Profiders/ConfigProvider";
 
 
 export default function LoadAboutUs() {
+  const configUrl: string = import.meta.env.VITE_API_CONFIG_URL;
+  const config: string | null = useConfig();
   return (
     <>
       <PageMeta
-        title="Emndex solution ltd | About Us"
-        description="Take your time to learn more about emndex solution ltd, Ecplore our services"
+        title={config['about meta title']}
+        description={config['about meta description']}
       />
-      <PageBreadcrumb title="About Emndex Solution" bgImage="url('/assets/img/about/banner-long.jpg')"/>
+      <PageBreadcrumb title="About Emndex Solution" bgImage={`url('${configUrl}/${config['about banner']}')`}/>
       <div className="space-y-6">
           <About />
       </div>

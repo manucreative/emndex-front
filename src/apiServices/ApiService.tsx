@@ -25,3 +25,46 @@ export const fetchFeatures = async (): Promise<FeaturesData> => {
         return { success: "false", message: "", error: error.message, data: [] };
     }
 };
+
+interface ConfigResponse{
+    data: object
+}
+
+export const getConfig = async (): Promise<ConfigResponse | null> => {
+    try {
+      const response = await API.get<ConfigResponse>("/configurations");
+      return response.data;
+    } catch (error: any) {
+      console.error("Error fetching configurations:", error);
+      return null;
+    }
+  };
+
+  export interface ServiceResponse {
+    success: string;
+    message: string;
+    error: string;
+    data:{
+        id: number;
+        service_title: string;
+        slug: string;
+        service_short_description: string;
+        service_full_description: string;
+        service_image: string;
+        service_icon: string;
+        service_starting_price?: string;
+        status: string;
+        created_at: string;
+        updated_at: string;
+    }
+}
+
+export const fetchServices = async(): Promise<ServiceResponse[]> =>{
+    try {
+      const response = await API.get("/getServices");
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching services:", error);
+    return { data: [], message: "Error detching Services"};
+    }
+}

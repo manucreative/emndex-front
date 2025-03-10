@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router"; // useLocation for active route detection
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { useConfig } from "../Profiders/ConfigProvider";
 
 const navItems = [
   { name: "Home", path: "/home" },
@@ -15,15 +16,21 @@ const navItems = [
 function AppHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation(); // Get current path
+  const config = useConfig();
+  const configUrl: string = import.meta.env.VITE_API_CONFIG_URL;
 
   return (
     <header className="fixed top-0 left-0 w-full bg-[#0a0a32] bg-opacity-90 shadow-lg z-50">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
-        <Link to="/" className="text-3xl font-bold text-white neon-text">
-          EMNDEX
-        </Link>
 
+      {config['system logo'] &&(
+        <Link to="/" className="text-3xl font-bold text-white neon-text">
+        <img src={`${configUrl}/${config['system logo']}`} alt="" width={140} height={40} />
+        </Link>
+      )
+      }
+        
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-6">
           {navItems.map((item, index) => {

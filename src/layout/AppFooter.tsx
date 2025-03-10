@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
+import { useConfig } from "../Profiders/ConfigProvider";
 
 function AppFooter() {
   const [currentDate, setCurrentDate] = useState(2025);
+  const configUrl: string = import.meta.env.VITE_API_CONFIG_URL;
+  const config = useConfig();
 
   useEffect(() => {
     setCurrentDate(new Date().getFullYear());
@@ -15,8 +18,8 @@ function AppFooter() {
   className="relative bg-cover bg-center py-16 text-center text-white z-0 h-[400px] " 
         style={{ backgroundImage: `url('/assets/img/footer-banner.jpg')` }}>
         <div className="container mx-auto px-6">
-          <h1 className="text-6xl font-bold gradient-text">Emndex Solution Ltd</h1>
-          <h4 className=" text-3xl mt-2">Trust us with your Project</h4>
+          <h1 className="text-6xl font-bold gradient-text">{config?.["footer head"]}</h1>
+          <h4 className=" text-3xl mt-2">{config?.["footer sub head"]}</h4>
           <hr className="neon-gradient-line mx-auto sm:w-1/4" />
           <a href="#" className="neon-border-button inline-block px-6 py-2 mt-10">Request a Quote</a>
         </div>
@@ -30,14 +33,22 @@ function AppFooter() {
     
     {/* Company Info */}
     <div>
-      <h1 className="text-3xl font-bold gradient-text">EMNDEX</h1>
-      <p className="mt-4">Having a project? Follow us and request a quote now, we are ready to bring your dream project to life.</p>
-      <div className="flex space-x-4 mt-4">
+    {config?.["system logo"] &&(
+      <img src={`${configUrl}/${config["system logo"]}`} 
+      alt="system logo"
+      width={170}
+      height={40} />
+    )}
+      <p className="mt-4">{config?.["footer content"]}</p>
+      {config?.["social media enabled"] === "yes" && (
+        <div className="flex space-x-4 mt-4">
         <a href="#" className="social-icon"><i className="fa fa-facebook"></i></a>
         <a href="#" className="social-icon"><i className="fa fa-twitter"></i></a>
         <a href="#" className="social-icon"><i className="fa fa-instagram"></i></a>
         <a href="#" className="social-icon"><i className="fa fa-dribbble"></i></a>
       </div>
+      )}
+      
     </div>
 
     {/* Contacts */}
@@ -46,13 +57,13 @@ function AppFooter() {
       <ul className="mt-4 space-y-2">
         <li>
           <p>Phone:</p>
-          <h6 className="gradient-text">+254745369555</h6>
-          <h6 className="gradient-text">+25421827214</h6>
+          <h6 className="gradient-text">{config?.["footer phone1"]}</h6>
+          <h6 className="gradient-text">{config?.["footer phone2"]}</h6>
         </li>
         <li>
           <p>Email:</p>
-          <h6 className="gradient-text">info@emndex.com</h6>
-          <h6 className="gradient-text">support@emndex.com</h6>
+          <h6 className="gradient-text">{config?.["footer email1"]}</h6>
+          <h6 className="gradient-text">{config?.["footer email2"]}</h6>
         </li>
       </ul>
     </div>
@@ -70,7 +81,7 @@ function AppFooter() {
 
     {/* Newsletter */}
     <div>
-      <h1 className="text-xl font-bold gradient-text">Subscribe to Stay Updated</h1>
+      <h1 className="text-xl font-bold gradient-text">{config?.["subscribe content"]}</h1>
       <form className="mt-4 flex">
         <input type="email" placeholder="Email" className="w-full px-4 py-2 bg-gray-800 text-white border-none rounded-l-lg focus:outline-none"/>
         <button type="submit" className="bg-green-500 px-4 py-2 rounded-r-lg hover:bg-green-600"><i className="fa fa-send-o"></i></button>
@@ -79,7 +90,7 @@ function AppFooter() {
 
     {/* Copyright Section (Centered) */}
     <div className="col-span-1 sm:col-span-2 md:col-span-4 text-center mt-8 text-sm">
-      <p>Copyright &copy; {new Date().getFullYear()} All rights reserved | 
+      <p>Copyright &copy; {currentDate} All rights reserved | 
         <Link to="#" target="_blank" className="text-green-400 hover:underline"> Emndex Solution Ltd</Link> |
         Developed by Emmanuel Kirui
       </p>
