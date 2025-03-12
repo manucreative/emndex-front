@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { motion } from "framer-motion";
 import { Typewriter } from 'react-simple-typewriter';
 import { useConfig } from "../../Profiders/ConfigProvider";
 const LaunchPageSection: React.FC = () =>{
-  const config = useConfig();
-  const typeData = config?.["home typewriter"] ? config?.["home typewriter"].split(",") : [];
+  const { configurations } = useConfig();
+  const typeData = configurations?.["home typewriter"] ? configurations?.["home typewriter"].split(",") : [];
   const configUrl: string = import.meta.env.VITE_API_CONFIG_URL;
 
     return (
@@ -15,7 +16,7 @@ const LaunchPageSection: React.FC = () =>{
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8 }}
         className="neon-text-2 text-4xl sm:text-5xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 text-transparent bg-clip-text mb-10">
-          {config?.["home typewriter"] && (
+          {configurations?.["home typewriter"] && (
           <Typewriter
               words={
                 typeData
@@ -35,7 +36,7 @@ const LaunchPageSection: React.FC = () =>{
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 2 }}
           className="mb-5 w-full sm:w-auto mx-auto" 
-          src={`${configUrl}/${config['advert banner']}`} 
+          src={`${configUrl}/${configurations?.['advert banner']}`} 
           alt="Vector Design" 
         />
 
@@ -53,7 +54,7 @@ const LaunchPageSection: React.FC = () =>{
             ease: "easeInOut",
           }}
           >
-            {config['slide text']}
+            {configurations?.['slide text']}
           </motion.span>
         </div>
 

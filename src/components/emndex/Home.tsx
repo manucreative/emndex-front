@@ -12,7 +12,7 @@ import { useNavigate } from "react-router";
 
 
 function Home(){
-    const config = useConfig();
+  const { configurations } = useConfig();
     const configUrl: string = import.meta.env.VITE_API_CONFIG_URL;
 
     const [services, setServices] = useState<ServiceResponse[]>([]);
@@ -40,7 +40,7 @@ function Home(){
         // wow.init();
       }, []);
 
-      const homeContent = config["about content"] || "";
+      const homeContent = configurations?.["about content"] || "";
         const words = homeContent.split(" "); // Split into words
         const limitedContent = words.slice(0, 200).join(" ") + (words.length > 200 ? "..." : "");
     return (
@@ -61,7 +61,7 @@ function Home(){
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
                 className="lg:w-1/2 px-4 mt-6 lg:mt-0">
-              <AboutusContent bg={`url('${configUrl}/${config['home banner']}')`} content={limitedContent} classData="bg-gradient-to-l from-[#7FDBFF] to-[#00f514] bg-clip-text text-transparent font-bold">
+              <AboutusContent bg={`url('${configUrl}/${configurations?.['home banner']}')`} content={limitedContent} classData="bg-gradient-to-l from-[#7FDBFF] to-[#00f514] bg-clip-text text-transparent font-bold">
                 <button className="z-10 neon-button relative px-6 py-3 text-sm font-bold uppercase tracking-wider text-white bg-transparent rounded-full overflow-hidden transition-transform duration-300 hover:scale-105 mt-6 focus:outline-none"
                 onClick={()=> navigate("/home/about")}>
                     Learn More

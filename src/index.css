@@ -68,6 +68,18 @@
   .menu-dropdown-badge-inactive {
     @apply bg-brand-50 group-hover:bg-brand-100 dark:bg-brand-500/15 dark:group-hover:bg-brand-500/20;
   }
+
+  .neon-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500;
+  }
+
+  .neon-border {
+    @apply border-b-2 border-pink-500 pb-1 inline-block;
+  }
+
+  .shadow-neon {
+    box-shadow: 0px 0px 15px rgba(10, 240, 228, 0.945);
+  }
 }
 .neon-button {
 	/* padding: 15px 30px; */
@@ -125,7 +137,7 @@
 .gradient-underline {
   display: inline-block;
   position: relative;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 .gradient-underline::after {
   content: '';
@@ -227,7 +239,6 @@
 
 /* Neon Text Effect */
 .neon-text {
-  font-size: 4rem;
   font-weight: bold;
   color: white;
   text-shadow:

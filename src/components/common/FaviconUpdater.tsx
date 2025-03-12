@@ -3,15 +3,15 @@ import { useConfig } from "../../Profiders/ConfigProvider";
 
 export default function FaviconUpdater(){
     const configUrl: string = import.meta.env.VITE_API_CONFIG_URL;
-    const config = useConfig();
+    const { configurations } = useConfig();
     useEffect(()=>{
-        if(config["system favicon"]){
+        if(configurations?.["system favicon"]){
             const link = document.querySelector("link[rel~='icon']");
             if(link){
-                link.href = `${configUrl}/${config['system favicon']}`;
+                link.href = `${configUrl}/${configurations?.['system favicon']}`;
             }
         }
-    },[config]);
+    },[configurations]);
 
     return null;
 }

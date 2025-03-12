@@ -44,7 +44,7 @@ export const getConfig = async (): Promise<ConfigResponse | null> => {
     success: string;
     message: string;
     error: string;
-    data:{
+    data?:{
         id: number;
         service_title: string;
         slug: string;
@@ -67,4 +67,43 @@ export const fetchServices = async(): Promise<ServiceResponse[]> =>{
       console.error("Error fetching services:", error);
     return { data: [], message: "Error detching Services"};
     }
+}
+
+export interface ProjectResponse {
+  success?: string;
+  message?: string;
+  error?: string;
+  id: number;
+  title: string;
+  slug: string;
+  cover_image: string;
+  description: string;
+  aboutProject: string;
+  media: [];
+  skills: string[];
+  deliverables?: string[];
+  status: string;
+  created_at: string;
+  updated_at: string;
+  
+}
+
+export const fetchAllProjects = async(): Promise<ProjectResponse[]> =>{
+  try {
+    const response = await API.get("/projects");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching services:", error);
+  return { data: [], message: "Error detching Services"};
+  }
+}
+
+export const projectDetails = async(slug: any): Promise<ProjectResponse[]> =>{
+  try {
+    const response = await API.get(`/projects/${slug}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching services:", error);
+  return { data: [], message: "Error detching Services"};
+  }
 }

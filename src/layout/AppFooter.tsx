@@ -5,7 +5,7 @@ import { useConfig } from "../Profiders/ConfigProvider";
 function AppFooter() {
   const [currentDate, setCurrentDate] = useState(2025);
   const configUrl: string = import.meta.env.VITE_API_CONFIG_URL;
-  const config = useConfig();
+  const { configurations } = useConfig();
 
   useEffect(() => {
     setCurrentDate(new Date().getFullYear());
@@ -18,8 +18,8 @@ function AppFooter() {
   className="relative bg-cover bg-center py-16 text-center text-white z-0 h-[400px] " 
         style={{ backgroundImage: `url('/assets/img/footer-banner.jpg')` }}>
         <div className="container mx-auto px-6">
-          <h1 className="text-6xl font-bold gradient-text">{config?.["footer head"]}</h1>
-          <h4 className=" text-3xl mt-2">{config?.["footer sub head"]}</h4>
+          <h1 className="text-6xl font-bold gradient-text">{configurations?.["footer head"]}</h1>
+          <h4 className=" text-3xl mt-2">{configurations?.["footer sub head"]}</h4>
           <hr className="neon-gradient-line mx-auto sm:w-1/4" />
           <a href="#" className="neon-border-button inline-block px-6 py-2 mt-10">Request a Quote</a>
         </div>
@@ -33,14 +33,14 @@ function AppFooter() {
     
     {/* Company Info */}
     <div>
-    {config?.["system logo"] &&(
-      <img src={`${configUrl}/${config["system logo"]}`} 
+    {configurations?.["system logo"] &&(
+      <img src={`${configUrl}/${configurations["system logo"]}`} 
       alt="system logo"
       width={170}
       height={40} />
     )}
-      <p className="mt-4">{config?.["footer content"]}</p>
-      {config?.["social media enabled"] === "yes" && (
+      <p className="mt-4">{configurations?.["footer content"]}</p>
+      {configurations?.["social media enabled"] === "yes" && (
         <div className="flex space-x-4 mt-4">
         <a href="#" className="social-icon"><i className="fa fa-facebook"></i></a>
         <a href="#" className="social-icon"><i className="fa fa-twitter"></i></a>
@@ -57,13 +57,13 @@ function AppFooter() {
       <ul className="mt-4 space-y-2">
         <li>
           <p>Phone:</p>
-          <h6 className="gradient-text">{config?.["footer phone1"]}</h6>
-          <h6 className="gradient-text">{config?.["footer phone2"]}</h6>
+          <h6 className="gradient-text">{configurations?.["footer phone1"]}</h6>
+          <h6 className="gradient-text">{configurations?.["footer phone2"]}</h6>
         </li>
         <li>
           <p>Email:</p>
-          <h6 className="gradient-text">{config?.["footer email1"]}</h6>
-          <h6 className="gradient-text">{config?.["footer email2"]}</h6>
+          <h6 className="gradient-text">{configurations?.["footer email1"]}</h6>
+          <h6 className="gradient-text">{configurations?.["footer email2"]}</h6>
         </li>
       </ul>
     </div>
@@ -81,7 +81,7 @@ function AppFooter() {
 
     {/* Newsletter */}
     <div>
-      <h1 className="text-xl font-bold gradient-text">{config?.["subscribe content"]}</h1>
+      <h1 className="text-xl font-bold gradient-text">{configurations?.["subscribe content"]}</h1>
       <form className="mt-4 flex">
         <input type="email" placeholder="Email" className="w-full px-4 py-2 bg-gray-800 text-white border-none rounded-l-lg focus:outline-none"/>
         <button type="submit" className="bg-green-500 px-4 py-2 rounded-r-lg hover:bg-green-600"><i className="fa fa-send-o"></i></button>

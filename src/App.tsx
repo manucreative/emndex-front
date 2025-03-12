@@ -5,6 +5,10 @@ import Loader from "./components/common/Loader";
 import { Suspense, lazy } from "react";
 import FaviconUpdater from "./components/common/FaviconUpdater";
 import NotFound from "./pages/OtherPage/NotFound";
+import { useConfig } from "./Profiders/ConfigProvider";
+import ServiceUnavailable from "./pages/OtherPage/ServiceNotAvailable";
+import LoadPortfolio from "./pages/portfolio/LoadPortfolio";
+import LoadProjectDetails from "./pages/portfolio/LoadProjectDetails";
 
 // ✅ Lazy load pages
 const HomeLouncher = lazy(() => import("./pages/Louncher/HomeLouncher"));
@@ -15,12 +19,19 @@ const LoadAboutUs = lazy(() => import("./pages/AboutUs/LoadAboutUs"));
 const LoadFaqs = lazy(() => import("./pages/Faqs/LoadFaqs"));
 
 function App() {
+  const { configurations, loading } = useConfig();
+
+  if (loading) {
+    return <Loader />;
+  }
+  // if (!configurations) {
+  //   return <ServiceUnavailable />;
+  // }
   return (
     <Router>
       <FaviconUpdater />
       <ScrollToTop />
       
-      {/* ✅ Global Suspense to wrap the whole Routes */}
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route element={<AppMainLayout />}>
@@ -31,6 +42,10 @@ function App() {
             <Route path="/home/services" element={<LoadServices />} />
             <Route path="/home/contact" element={<LoadContactForm />} />
             <Route path="/home/faqs" element={<LoadFaqs />} />
+            <Route path="/home/portfolio" element={<LoadPortfolio />} />
+
+            <Route path="/home/portfolio/projects/:slug" element={<LoadProjectDetails title=":slug" />} />
+
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -4,8 +4,8 @@ const PageMeta = ({
   title,
   description,
 }: {
-  title: string;
-  description: string;
+  title?: string ;
+  description?: string;
 }) => (
   <Helmet>
     <title>{title}</title>

@@ -1,0 +1,114 @@
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+
+
+const profiles = [
+  {
+    id: 1,
+    name: "Emmanuel Kirui",
+    profession: "Software Developer & Full Stack Engineer",
+    graduated_school: "KCA University",
+    image: "/assets/img/passprt.jpg",
+    resume: "https://example.com/emmanuel_resume.pdf",
+    description: "I am an experienced full-stack developer with expertise in Laravel, React, and Magento 2. I have worked on various e-commerce and API integration projects, including MPESA payment systems an TIMs integration.",
+  },
+  {
+    id: 2,
+    name: "Charles Ndavu",
+    profession: "Data Analyst",
+    graduated_school: "KCA University",
+    image: "/assets/img/prof1.jpg",
+    resume: "https://example.com/john_resume.pdf",
+    description: "I specialize in data analysis, visualization, and business intelligence. With experience in Python, SQL, and Power BI, I helps businesses make data-driven decisions efficiently contact and hire me now.",
+  },
+];
+const ProfileSlider: React.FC = () => {
+     const [index, setIndex] = useState(0);
+      const [direction, setDirection] = useState(1);
+      const nextProfile = () => {
+        setDirection(1);
+        setIndex((prev) => (prev + 1) % profiles.length)};
+      const prevProfile = () => {
+        setDirection(-1)
+        setIndex((prev) => (prev - 1 + profiles.length) % profiles.length)};
+    
+      // Auto-slide every 5 seconds
+      useEffect(() => {
+        const interval = setInterval(nextProfile, 7000);
+        return () => clearInterval(interval);
+      }, []);
+
+    return (
+        <div className="flex items-center justify-center space-x-4 mb-10">
+          {/* Left Button */}
+          <button
+            onClick={prevProfile}
+            className="hidden md:block p-2 text-white text-2xl hover:text-gray-400"
+          >
+            <FaChevronLeft />
+          </button>
+
+          {/* Carousel */}
+          <div className="relative w-full max-w-full  overflow-hidden p-4">
+            <AnimatePresence custom={direction} mode="wait">
+              <motion.div
+                key={profiles[index].id}
+                className="relative bg-[rgba(71,4,102,0.10)] border rounded-3xl border-transparent flex flex-col md:flex-row justify-center items-center text-center md:text-left p-6 overflow-hidden transition-shadow duration-300 cursor-pointer
+                  before:content-[''] before:absolute before:inset-0 before:rounded-lg before:-z-10 pointer-events-none z-0 transition-opacity duration-300"
+                style={{ 
+                  boxShadow: "0 0 15px rgba(255, 20, 149, 0.53), 5px -5px 20px rgba(161, 20, 255, 0.24)",
+                }}
+                initial={{ opacity: 0, x: direction * 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -direction * 100 }}
+                transition={{ duration: 0.6 }}
+              >
+                {/* Left Column - Profile Info */}
+                <div className="w-full md:w-1/2 flex flex-col items-center text-center">
+                  <motion.img
+                    src={profiles[index].image}
+                    alt={profiles[index].name}
+                    className="w-32 h-32 md:w-48 md:h-48 rounded-full border-2 border-blue-500"
+                    initial={{ scale: 0.4, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.9 }}
+                  />
+                    <motion.h2 className="text-xl md:text-2xl font-bold mt-2"
+                    initial={{ scale: 0.4, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.7 }}
+                    >
+                    {profiles[index].name}
+                    </motion.h2>
+                  <p className="text-md md:text-lg text-gray-300">{profiles[index].profession}</p>
+                  <h3 className="text-lg md:text-xl font-bold mt-2">{profiles[index].graduated_school}</h3>
+                  <button
+                    className="mt-4 px-4 py-2 md:px-6 md:py-3 neon-button neon-image"
+                    onClick={() => window.open(profiles[index].resume, "_blank")}
+                  >
+                    Find My Profile
+                  </button>
+                </div>
+
+                {/* Right Column - Description */}
+                <div className="w-auto md:w-1/2 flex flex-col justify-center px-6 text-left mt-4 md:mt-0">
+                  <h3 className="neon-text-2 gradient-underline mb-6 text-lg md:text-3xl">Professional Profile</h3>
+                  <p className="text-sm md:text-lg text-gray-300">{profiles[index].description}</p>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Right Button (Hidden on Small Screens) */}
+          <button
+            onClick={nextProfile}
+            className="hidden md:block p-2 text-white text-2xl hover:text-gray-400"
+          >
+            <FaChevronRight />
+          </button>
+        </div>
+    );
+}
+
+export default ProfileSlider;

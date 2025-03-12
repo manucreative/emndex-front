@@ -6,16 +6,16 @@ import { useConfig } from "../../Profiders/ConfigProvider";
 
 export default function LoadServices() {
   const configUrl: string = import.meta.env.VITE_API_CONFIG_URL;
-  const config: string | null = useConfig();
+  const { configurations } = useConfig();
 
-  console.log(config["service meta title"]);
+  console.log(configurations?.["service meta title"]);
   return (
     <>
       <PageMeta
-        title={config["service meta title"]}
-        description={config["service meta description"]}
+        title={configurations?.["service meta title"]}
+        description={configurations?.["service meta description"]}
       />
-      <PageBreadcrumb title="Our Services" bgImage={`url('${configUrl}/${config['service banner']}')`}/>
+      <PageBreadcrumb title="Our Services" bgImage={`url('${configUrl}/${configurations?.['service banner']}')`}/>
       <div className="space-y-6">
           <Services />
       </div>

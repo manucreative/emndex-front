@@ -5,15 +5,15 @@ import { useConfig } from "../../Profiders/ConfigProvider";
 
 export default function HomeLouncher() {
 const configUrl: string = import.meta.env.VITE_API_CONFIG_URL;
-      const config: string | null = useConfig();
+      const { configurations } = useConfig();
   
   return (
     <>
       <PageMeta
-        title={config['home meta title']}
-        description={config['home meta description']}
+        title={configurations?.['home meta title']}
+        description={configurations?.['home meta description']}
       />
-      <PageBreadcrumb bgImage={`url('${configUrl}/${config['home banner']}')`}/>
+      <PageBreadcrumb bgImage={`url('${configUrl}/${configurations?.['home banner']}')`}/>
       <div className="space-y-6">
           <Home/>
       </div>

@@ -6,14 +6,14 @@ import { useConfig } from "../../Profiders/ConfigProvider";
 
 export default function LoadAboutUs() {
   const configUrl: string = import.meta.env.VITE_API_CONFIG_URL;
-  const config: string | null = useConfig();
+  const { configurations } = useConfig();
   return (
     <>
       <PageMeta
-        title={config['about meta title']}
-        description={config['about meta description']}
+        title={configurations?.['about meta title']}
+        description={configurations?.['about meta description']}
       />
-      <PageBreadcrumb title="About Emndex Solution" bgImage={`url('${configUrl}/${config['about banner']}')`}/>
+      <PageBreadcrumb title="About Emndex Solution" bgImage={`url('${configUrl}/${configurations?.['about banner']}')`}/>
       <div className="space-y-6">
           <About />
       </div>

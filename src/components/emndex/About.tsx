@@ -9,7 +9,7 @@ import { useConfig } from "../../Profiders/ConfigProvider";
 
 function About(){
     const [services, setServices] = useState<ServiceResponse[]>([]);
-    const config = useConfig();
+    const { configurations } = useConfig();
         const loadServices = async () => {
             fetchServices()
               .then((response) => {
@@ -45,7 +45,7 @@ function About(){
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8, delay: 0.5 }}
                     className="lg:w-1/2 px-4 mt-4 lg:mt-0">
-                <AboutusContent content={config["about content"]} />
+                <AboutusContent content={configurations?.["about content"]} />
             </motion.div>
                 </GlowBoxesSection>
             </div>

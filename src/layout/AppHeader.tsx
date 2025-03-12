@@ -9,14 +9,14 @@ const navItems = [
   { name: "About", path: "/home/about" },
   { name: "Services", path: "/home/services" },
   { name: "Features", path: "/home/features" },
-  { name: "FAQs", path: "/home/faqs" },
+  { name: "Portfolio", path: "/home/portfolio" },
   { name: "Contact", path: "/home/contact" },
 ];
 
 function AppHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation(); // Get current path
-  const config = useConfig();
+  const { configurations } = useConfig();
   const configUrl: string = import.meta.env.VITE_API_CONFIG_URL;
 
   return (
@@ -24,9 +24,9 @@ function AppHeader() {
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
 
-      {config['system logo'] &&(
+      {configurations?.['system logo'] &&(
         <Link to="/" className="text-3xl font-bold text-white neon-text">
-        <img src={`${configUrl}/${config['system logo']}`} alt="" width={140} height={40} />
+        <img src={`${configUrl}/${configurations?.['system logo']}`} alt="" width={140} height={40} />
         </Link>
       )
       }
