@@ -1,7 +1,7 @@
 import PageBreadcrumb from "../../components/common/PageBreadcrumb";
 import PageMeta from "../../components/common/PageMeta";
 import Portfolio from "../../components/emndex/Portfolio";
-import { useConfig } from "../../Profiders/ConfigProvider";
+import { useConfig } from "../../context/ConfigProvider";
 
 
 export default function LoadPortfolio() {

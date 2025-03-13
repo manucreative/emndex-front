@@ -5,7 +5,7 @@ import "swiper/swiper-bundle.css";
 import "simplebar-react/dist/simplebar.min.css";
 import App from './App.tsx';
 import { AppWrapper } from "./components/common/PageMeta.tsx";
-import { ConfigProvider } from "./Profiders/ConfigProvider.tsx";
+import { ConfigProvider } from "./context/ConfigProvider.tsx";
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <StrictMode>

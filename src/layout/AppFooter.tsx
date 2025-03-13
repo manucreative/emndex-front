@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import { useConfig } from "../Profiders/ConfigProvider";
+import { useConfig } from "../context/ConfigProvider";
 
 function AppFooter() {
   const [currentDate, setCurrentDate] = useState(2025);

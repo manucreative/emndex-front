@@ -5,7 +5,7 @@ import Loader from "./components/common/Loader";
 import { Suspense, lazy } from "react";
 import FaviconUpdater from "./components/common/FaviconUpdater";
 import NotFound from "./pages/OtherPage/NotFound";
-import { useConfig } from "./Profiders/ConfigProvider";
+import { useConfig } from "./context/ConfigProvider";
 import ServiceUnavailable from "./pages/OtherPage/ServiceNotAvailable";
 import LoadPortfolio from "./pages/portfolio/LoadPortfolio";
 import LoadProjectDetails from "./pages/portfolio/LoadProjectDetails";
@@ -24,9 +24,9 @@ function App() {
   if (loading) {
     return <Loader />;
   }
-  // if (!configurations) {
-  //   return <ServiceUnavailable />;
-  // }
+  if (!configurations) {
+    return <ServiceUnavailable />;
+  }
   return (
     <Router>
       <FaviconUpdater />

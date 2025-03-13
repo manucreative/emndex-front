@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useConfig } from "../../Profiders/ConfigProvider";
+import { useConfig } from "../../context/ConfigProvider";
 
 export default function FaviconUpdater(){
     const configUrl: string = import.meta.env.VITE_API_CONFIG_URL;

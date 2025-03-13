@@ -6,7 +6,7 @@ import LaunchPageSection from "../common/LaunchPageSection";
 import { AboutusContent } from "../common/AboutusContent";
 import { motion } from "framer-motion";
 import FAQSection from "../common/FAQSection";
-import { useConfig } from "../../Profiders/ConfigProvider";
+import { useConfig } from "../../context/ConfigProvider";
 import { fetchServices, ServiceResponse} from "../../apiServices/ApiService";
 import { useNavigate } from "react-router";
 

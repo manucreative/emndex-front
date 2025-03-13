@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router"; // useLocation for active route detection
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { useConfig } from "../Profiders/ConfigProvider";
+import { useConfig } from "../context/ConfigProvider";
 
 const navItems = [
   { name: "Home", path: "/home" },
@@ -26,7 +26,7 @@ function AppHeader() {
 
       {configurations?.['system logo'] &&(
         <Link to="/" className="text-3xl font-bold text-white neon-text">
-        <img src={`${configUrl}/${configurations?.['system logo']}`} alt="" width={140} height={40} />
+        <img src={`${configUrl}/${configurations?.['system logo']}`} alt="" width={120} height={30} />
         </Link>
       )
       }

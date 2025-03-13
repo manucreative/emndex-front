@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { AboutusContent } from "../common/AboutusContent";
 import ContactForm from "../common/ContactForm";
 import { fetchServices, ServiceResponse } from "../../apiServices/ApiService";
-import { useConfig } from "../../Profiders/ConfigProvider";
+import { useConfig } from "../../context/ConfigProvider";
 
 function About(){
     const [services, setServices] = useState<ServiceResponse[]>([]);

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { motion } from "framer-motion";
 import { Typewriter } from 'react-simple-typewriter';
-import { useConfig } from "../../Profiders/ConfigProvider";
+import { useConfig } from "../../context/ConfigProvider";
 const LaunchPageSection: React.FC = () =>{
   const { configurations } = useConfig();
   const typeData = configurations?.["home typewriter"] ? configurations?.["home typewriter"].split(",") : [];

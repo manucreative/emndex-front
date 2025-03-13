@@ -2,7 +2,7 @@ import { useParams } from "react-router";
 import PageBreadcrumb from "../../components/common/PageBreadcrumb";
 import PageMeta from "../../components/common/PageMeta";
 
-import { useConfig } from "../../Profiders/ConfigProvider";
+import { useConfig } from "../../context/ConfigProvider";
 import ProjectDetails from "../../components/emndex/ProjectDetails";
 
 
