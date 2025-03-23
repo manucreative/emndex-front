@@ -9,6 +9,7 @@ import { useConfig } from "./context/ConfigProvider";
 import ServiceUnavailable from "./pages/OtherPage/ServiceNotAvailable";
 import LoadPortfolio from "./pages/portfolio/LoadPortfolio";
 import LoadProjectDetails from "./pages/portfolio/LoadProjectDetails";
+import LoadResumeDetails from "./pages/portfolio/LoadResumeDetails";
 
 // ✅ Lazy load pages
 const HomeLouncher = lazy(() => import("./pages/Louncher/HomeLouncher"));
@@ -43,8 +44,9 @@ function App() {
             <Route path="/home/contact" element={<LoadContactForm />} />
             <Route path="/home/faqs" element={<LoadFaqs />} />
             <Route path="/home/portfolio" element={<LoadPortfolio />} />
+            <Route path="/home/team/:slug" element={<LoadResumeDetails />} />
 
-            <Route path="/home/portfolio/projects/:slug" element={<LoadProjectDetails title=":slug" />} />
+            <Route path="/home/portfolio/projects/:slug" element={<LoadProjectDetails />} />
 
           </Route>
           <Route path="*" element={<NotFound />} />

@@ -10,7 +10,7 @@ export default function LoadFaqs() {
         title="Emndex solution ltd | FAQs"
         description="Make sure you understand us well, learn more about us wi the this Frequently Asked Questions"
       />
-      <PageBreadcrumb title="Frequently Asked Questions" bgImage="url('/assets/img/about/banner-long.jpg')"/>
+      <PageBreadcrumb title="faqs" bgImage="url('/assets/img/about/banner-long.jpg')"/>
       <div className="space-y-6">
           <Faqs />
       </div>

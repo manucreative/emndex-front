@@ -107,3 +107,89 @@ export const projectDetails = async(slug: any): Promise<ProjectResponse[]> =>{
   return { data: [], message: "Error detching Services"};
   }
 }
+
+interface awards {
+  id: string;
+  award_name: string;
+  issued_by: string;
+  date_received: string;
+}
+
+interface resume {
+  id: string;
+  bio: string;
+linkedin: string;
+github: string;
+website: string;
+}
+
+interface education {
+  id: string;
+  institution_name: string;
+  degree: string;
+  field_of_study: string;
+  start_date: string;
+  end_date: string;
+  description: string;
+}
+
+interface experiences {
+  id: string;
+  company_name: string;
+  position: string;
+  start_date: string;
+  end_date: string;
+  description: string;
+}
+
+interface skills {
+  id: string;
+  skill_name: string;
+  proficiency_level: string;
+}
+
+interface interests {
+  id: string;
+  interest_name: string;
+}
+
+interface certification {
+id: string;
+certificate_name: string;
+issued_by: string;
+issue_date: string;
+expiration_date: string;
+}
+
+interface languages {
+  id: string;
+  language: string;
+  proficiency: string;
+}
+
+export interface UserResponse {
+  // roles: roles[];
+  awards: awards[];
+  resume: resume;
+  education: education[];
+  experiences: experiences[];
+  skills: skills[];
+  interests: interests[];
+  certifications: certification[];
+  languages: languages[];
+  id: string;
+  first_name: string;
+  last_name: string;
+  city: string;
+  title: string;
+  country: string;
+  address: string;
+  admin_phone: string;
+  email: string;
+  admin_image: string;
+}
+
+export const fetchUsers = async (): Promise<UserResponse> => {
+  const response = await API.get('/getUsers');
+  return response.data;
+};

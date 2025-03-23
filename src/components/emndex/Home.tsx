@@ -33,16 +33,16 @@ function Home(){
             console.error("Error fetching Services", error);
           });
       };
-    useEffect(() => {
-        loadServices();
-        
-        // const wow = new WOW({ live: false });
-        // wow.init();
-      }, []);
 
       const homeContent = configurations?.["about content"] || "";
         const words = homeContent.split(" "); // Split into words
         const limitedContent = words.slice(0, 200).join(" ") + (words.length > 200 ? "..." : "");
+    useEffect(() => {
+        loadServices();
+        
+      }, [configurations]);
+
+      
     return (
         <div>
             <section className="relative min-h-[500px] flex justify-center items-center bg-gradient-to-b from-[rgb(9,3,26)] via-[#08041d] to-[rgb(9,3,26)] text-white overflow-hidden">

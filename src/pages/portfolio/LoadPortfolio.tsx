@@ -13,7 +13,7 @@ export default function LoadPortfolio() {
         title={configurations?.['portfolio meta title']}
         description={configurations?.['portfolio meta description']}
       />
-      <PageBreadcrumb title="Portfolio" bgImage={`url('${configUrl}/${configurations?.['portfolio banner']}')`}/>
+      <PageBreadcrumb title="portfolio" bgImage={`url('${configUrl}/${configurations?.['portfolio banner']}')`}/>
       <div className="">
           <Portfolio />
       </div>

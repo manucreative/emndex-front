@@ -13,7 +13,7 @@ export default function LoadAboutUs() {
         title={configurations?.['about meta title']}
         description={configurations?.['about meta description']}
       />
-      <PageBreadcrumb title="About Emndex Solution" bgImage={`url('${configUrl}/${configurations?.['about banner']}')`}/>
+      <PageBreadcrumb title="about" bgImage={`url('${configUrl}/${configurations?.['about banner']}')`}/>
       <div className="space-y-6">
           <About />
       </div>

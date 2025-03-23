@@ -13,7 +13,7 @@ export default function LoadFeatures() {
         title={configurations?.['feature meta title']}
         description={configurations?.['feature meta description']}
       />
-      <PageBreadcrumb title="Our Features" bgImage={`url('${configUrl}/${configurations?.['feature banner']}')`}/>
+      <PageBreadcrumb title="features" bgImage={`url('${configUrl}/${configurations?.['feature banner']}')`}/>
       <div className="space-y-6">
           <Features />
       </div>

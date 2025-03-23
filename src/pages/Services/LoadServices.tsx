@@ -15,7 +15,7 @@ export default function LoadServices() {
         title={configurations?.["service meta title"]}
         description={configurations?.["service meta description"]}
       />
-      <PageBreadcrumb title="Our Services" bgImage={`url('${configUrl}/${configurations?.['service banner']}')`}/>
+      <PageBreadcrumb title="services" bgImage={`url('${configUrl}/${configurations?.['service banner']}')`}/>
       <div className="space-y-6">
           <Services />
       </div>

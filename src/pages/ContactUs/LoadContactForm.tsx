@@ -13,7 +13,7 @@ export default function LoadContactForm() {
         title={configurations?.['contact meta title']}
         description={configurations?.['contact meta title']}
       />
-      <PageBreadcrumb title="Emndex Contact Form" bgImage={`url('${configUrl}/${configurations?.['contact banner']}')`}/>
+      <PageBreadcrumb title="contact" bgImage={`url('${configUrl}/${configurations?.['contact banner']}')`}/>
       <div className="space-y-6">
           <Contactus />
       </div>
