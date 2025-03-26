@@ -117,10 +117,14 @@ interface awards {
 
 interface resume {
   id: string;
+  dob: string;
+  id_no: string;
+  gender: string;
+  marital_status: string;
   bio: string;
-linkedin: string;
-github: string;
-website: string;
+  linkedin: string;
+  github: string;
+  website: string;
 }
 
 interface education {
@@ -137,6 +141,7 @@ interface experiences {
   id: string;
   company_name: string;
   position: string;
+  duties_and_responsibilities: string[];
   start_date: string;
   end_date: string;
   description: string;
@@ -151,6 +156,25 @@ interface skills {
 interface interests {
   id: string;
   interest_name: string;
+}
+
+interface expertise {
+  id: string;
+  expertise_name: string;
+}
+
+interface references {
+  id: string;
+  referee_name: string;
+  referee_title: string;
+  company_one: string;
+  company_two: string;
+  postal_address: string;
+  postal_code: string;
+  city: string;
+  email_address: string;
+  phone_no: string;
+  website: string;
 }
 
 interface certification {
@@ -177,6 +201,8 @@ export interface UserResponse {
   interests: interests[];
   certifications: certification[];
   languages: languages[];
+  references: references[];
+  expertise: expertise[];
   id: string;
   first_name: string;
   last_name: string;

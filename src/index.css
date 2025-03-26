@@ -16,6 +16,104 @@
   }
 }
 
+@media print {
+  body {
+    -webkit-print-color-adjust: exact; /* Ensure colors print correctly */
+    print-color-adjust: exact;
+  }
+
+  /* Force A4 size */
+  @page {
+    size: A4;
+    margin: 0.5cm;
+  }
+
+  /* Prevent column stacking */
+  .print-container {
+    display: grid !important;
+    grid-template-columns: 4fr 6fr !important;
+    gap: 1rem !important;
+  }
+
+  /* Remove unnecessary paddings/margins */
+  .print-container div {
+    page-break-inside: avoid !important;
+    width: 100% !important;
+  }
+
+  /* Adjust text sizes */
+  h3, h4 {
+    font-size: 12px !important;
+    color: #000 !important;
+    padding-bottom: 0 !important;
+    text-decoration: none !important;
+    text-decoration: underline !important; /* Ensure underline is applied */
+    text-underline-offset: 2px;
+    font-family: 'Times New Roman', Times, serif !important;
+
+  }
+
+  h3.name {
+    font-size: 32px !important;
+    color: #000; 
+    text-decoration: none !important;
+    font-family: 'Times New Roman', Times, serif !important;
+  }
+
+  p.title {
+    font-size: 24px !important;
+    color: #000;
+    font-family: 'Times New Roman', Times, serif !important;
+    margin-top: 2px;
+  }
+  p {
+    line-height: 1.1 !important;
+    margin-bottom: 2px !important;
+    padding-bottom: 0 !important;
+    font-size: 10px !important;
+    color: #000 !important;
+    font-weight: bold !important;
+    font-family: 'Times New Roman', Times, serif !important;
+  }
+
+  /* span {
+    line-height: 1.1 !important;
+    padding-bottom: 0 !important;
+    font-size: 10px !important;
+    color: #000 !important;
+    font-family: 'Times New Roman', Times, serif !important;
+  } */
+  p a {
+    padding-bottom: 0 !important;
+    font-size: 10px !important;
+    color: #000 !important;
+    font-family: 'Times New Roman', Times, serif !important;
+    font-weight:normal
+  }
+
+  p.edu {
+    font-weight:normal !important;
+  }
+  span.badge {
+    border-color: #000 !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+  }
+
+  /* Reduce spacing for spans inside paragraphs */
+  p span {
+    color: #000 !important;
+    display: inline !important;
+    line-height: inherit !important;
+    font-size: 10px !important;
+    font-weight:normal
+
+  }
+}
+
+
 @layer components {
   .menu-item {
     @apply relative flex items-center w-full gap-3 px-3 py-2 font-medium rounded-lg text-theme-sm;
