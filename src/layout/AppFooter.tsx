@@ -21,7 +21,7 @@ function AppFooter() {
           <h1 className="text-6xl font-bold gradient-text">{configurations?.["footer head"]}</h1>
           <h4 className=" text-3xl mt-2">{configurations?.["footer sub head"]}</h4>
           <hr className="neon-gradient-line mx-auto sm:w-1/4" />
-          <a href="#" className="neon-border-button inline-block px-6 py-2 mt-10">Request a Quote</a>
+          <Link to="/home/contact" className="neon-border-button inline-block px-6 py-2 mt-10">Request a Quote</Link>
         </div>
       </section>
 
@@ -76,6 +76,8 @@ function AppFooter() {
         <li><Link to="/home/services" className="nav-item">Services</Link></li>
         <li><Link to="/home/features" className="nav-item">Features</Link></li>
         <li><Link to="/home/contact" className="nav-item">Contact</Link></li>
+        <li><Link to="/home/team" className="nav-item">Professional team</Link></li>
+        <li><Link to="/home/portfolio" className="nav-item">Portfolio</Link></li>
       </ul>
     </div>
 

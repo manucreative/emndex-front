@@ -49,7 +49,7 @@ const ProfileSlider: React.FC = () => {
       useEffect(() => {
         if (profiles.length === 0) return; // Prevent running when profiles are empty
     
-        const interval = setInterval(nextProfile, 7000);
+        const interval = setInterval(nextProfile, 5000);
         return () => clearInterval(interval);
       }, [profiles]);
 

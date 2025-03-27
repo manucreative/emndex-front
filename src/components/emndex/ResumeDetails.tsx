@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import Loader from "../common/Loader";
 import { useReactToPrint } from "react-to-print";
 import { useEffect, useRef } from "react";
@@ -11,12 +11,23 @@ import { useEffect, useRef } from "react";
         const profile = location.state?.profile || null;
         console.log(profile);
         const contentRef = useRef<HTMLDivElement>(null);
+        const navigate = useNavigate();
 
         const handlePrint = useReactToPrint({
           contentRef,
           documentTitle: `${profile?.first_name}_${profile?.last_name}_Resume`,
           ignoreGlobalStyles: false,
       });
+
+      const trimContent = (text: string, wordLimit: number = 8): string => {
+        if (!text) return "";
+      
+        const words = text.split(" ");
+        return words.length > wordLimit
+          ? words.slice(0, wordLimit).join(" ") + "..."
+          : text;
+      };
+      
       useEffect(()=>{
         const style = document.createElement("style");
         style.innerHTML = `
@@ -38,6 +49,7 @@ import { useEffect, useRef } from "react";
     };
 
     return (
+      <>
       <section className="relative flex justify-center items-center bg-gradient-to-b from-[rgb(9,3,26)] via-[rgb(16,2,49)] to-[rgb(9,3,26)] text-white py-12 px-4 md:px-6">
         
         <div className="absolute top-1 right-9 mb-6">
@@ -131,7 +143,7 @@ import { useEffect, useRef } from "react";
                     {/* Awards Section */}
                     {profile.awards?.length > 0 && (
                       <div className="mt-2">
-                        <h3 className="text-sm md:text-xl font-semibold underline">AWARDS</h3>
+                        <h3 className="text-md md:text-lg font-semibold underline">AWARDS</h3>
                         {profile.awards.map((award: any) => (
                           <div key={award.id} className="">
                             <h4 className="text-green-500 font-bold">{award.award_name}</h4>
@@ -144,7 +156,7 @@ import { useEffect, useRef } from "react";
 
                     {profile.skills?.length > 0 && (
                       <div className="mt-1">
-                      <h3 className="text-lg md:text-xl font-semibold underline">SKILLS</h3>
+                      <h3 className="text-md md:text-lg font-semibold underline">SKILLS</h3>
                       <div className="flex flex-wrap gap-1 mt-1">
                       {profile.skills.map((skill: any) => (
                       <span 
@@ -171,13 +183,13 @@ import { useEffect, useRef } from "react";
                       
                       {profile.resume.bio?.trim() && (
                       <div className="text-left px-4 mt-4">
-                        <h3 className="text-lg md:text-2xl font-semibold underline">PROFESSIONAL PROFILE</h3>
+                        <h3 className="text-md md:text-lg font-semibold underline">PROFESSIONAL PROFILE</h3>
                         <p className="edu ml-2 text-sm">{profile.resume.bio}</p>
                       </div>
                       )}
                         {profile.experiences?.length > 0 && (
-                      <div className="text-left px-4">
-                        <h3 className="text-lg md:text-2xl font-semibold underline">WORK EXPERIENCE</h3>
+                      <div className="text-left px-4 mt-2">
+                        <h3 className="text-md md:text-lg font-semibold underline">WORK EXPERIENCE</h3>
                         {profile.experiences.map((experience: any) => (
                           <div key={experience.id}>
                         <p className="ml-2 title text-2xl text-blue-300">{experience.company_name}:</p>
@@ -194,14 +206,78 @@ import { useEffect, useRef } from "react";
                         </div>
                         ))}
                       </div>
-                        )
-                      }
+                        ) }
+                      {profile.projects?.length > 0 && (
+                          <div className="text-left px-4 mt-2">
+                            <h3 className="text-md md:text-lg font-semibold underline">PROJECTS DONE</h3>
+                            <ul className="list-decimal ml-4 text-sm">
+                              {profile.projects.map((project: any, i: any) => (
+                                  <li key={i} className="ml-6">{project.title}</li>
+                              ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {profile.references?.length > 0 && (
+                        <div className="text-left px-4 mt-2">
+                        <h3 className="text-md md:text-lg font-semibold underline">REFERENCES</h3>
+                        <div className="mx-auto grid grid-cols-1 md:grid-cols-12 gap-4 mt-2 md:gap-8">
+                          {profile.references?.map((reference: any, i: any) => (
+                        <div key={i} className="col-span-1 md:col-span-4 top-0 self-start px-2 py-2 border rounded-lg">
+                             { reference?.referee_name?.trim() && <p className="text-md"><strong>{reference?.referee_name}</strong></p> }
+                             { reference?.referee_title?.trim() && <p className="text-sm"><strong>{reference?.referee_title}</strong></p> }
+                             { reference?.company_one?.trim() && <p className="text-sm">{reference?.company_one}</p> }
+                             { reference?.company_two?.trim() && <p className="text-sm">{reference?.company_two}</p> }
+                             { reference?.postal_address?.trim() && <p className="text-sm">P.O Box {reference?.postal_address} - {reference?.postal_code} - {reference?.city}</p> }
+                             { reference?.email_address?.trim() && <p className="text-sm">{reference?.email_address}</p> }
+                             { reference?.phone_no?.trim() && <p className="text-sm">{reference?.phone_no}</p> }
+                             { reference?.website?.trim() && <p className="text-sm">{reference?.website}</p> }
+                             </div>
+                          ))}
+                        </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
           </div>
-        
       </section>
+      <section className="relative flex justify-center items-center bg-gradient-to-b from-[rgb(9,3,26)] via-[rgb(16,2,49)] to-[rgb(9,3,26)] text-white py-12 px-4 md:px-6">
+      {profile.projects?.length > 0 && (
+      <div className="container mx-auto text-left border p-6 md:p-12 rounded-xl">
+        <h3 className="text-lg md:text-xl font-semibold underline">MY PROJECTS</h3>
+
+        {/* Grid for projects */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4 cursor-pointer">
+          {profile.projects.map((project: any, i: any) => (
+            <div
+              key={i}
+              onClick={() => navigate(`/home/portfolio/projects/${project?.slug}`)}
+              className="bg-gray-800 p-4 rounded-lg shadow-lg transition duration-200 hover:bg-gray-600 hover:shadow-[0_0_5px_1px_rgba(231,8,146,0.8),0_0_25px_7px_rgba(236,225,72,0.7),0_0_25px_15px_rgba(34,20,228,0.6)]"
+            >
+              {/* Image & Details */}
+              <div className="flex flex-col md:flex-row items-center md:items-center  gap-4">
+                <div className="w-full md:w-1/2">
+                  <img
+                    src={`${STORAGE_URL}/${project?.cover_image}`}
+                    alt={project?.title}
+                    className="w-full h-auto rounded-lg object-cover"
+                  />
+                </div>
+
+                <div className="md:w-1/2">
+                  <p className="text-md font-bold">{project?.title}</p>
+                  <p className="text-sm">{trimContent(project?.description)}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+</section>
+
+      </>
     );
     
       
