@@ -119,7 +119,6 @@ const ProfileSlider: React.FC = () => {
             </AnimatePresence>
           </div>
 
-          {/* Right Button (Hidden on Small Screens) */}
           <button
             onClick={nextProfile}
             className="hidden md:block p-2 text-white text-2xl hover:text-gray-400"
