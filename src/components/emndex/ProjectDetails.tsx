@@ -86,7 +86,7 @@ import { useEffect, useState } from "react";
       
               {/* About the Project */}
               <h3 className="text-2xl md:text-3xl font-semibold mt-8 neon-border">About the Project</h3>
-              <p className="text-gray-400 mt-2 text-lg md:text-xl">{project.aboutProject}</p>
+              <p className="text-gray-400 mt-2 text-lg md:text-xl" dangerouslySetInnerHTML={{ __html: project.aboutProject }}></p>
             </div>
           </div>
         </section>
