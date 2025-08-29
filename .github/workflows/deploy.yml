@@ -28,7 +28,7 @@ jobs:
       - name: Deploy to emndex_front_build
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          publish_branch: main
-          external_repository: manucreative/emndex_front_build
+            personal_token: ${{ secrets.ACTION_DEPLOY_KEY }}
+            external_repository: manucreative/emndex_front_build
+            publish_dir: ./dist
+            publish_branch: main
