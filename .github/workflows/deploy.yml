@@ -23,6 +23,10 @@ jobs:
 
       - name: Build project
         run: npm run build
+        env:
+            VITE_API_BASE_URL: ${{ secrets.VITE_API_BASE_URL }}
+            VITE_API_STORAGE_URL: ${{ secrets.VITE_API_STORAGE_URL }}
+            VITE_API_CONFIG_URL: ${{ secrets.VITE_API_CONFIG_URL }}
 
       # Push dist folder to Repo other repo
       - name: Deploy to emndex_front_build
