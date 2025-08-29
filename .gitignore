@@ -1,6 +1,8 @@
 # Dependencies
 .psci_modules
 .spago
+.env
+dist
 bower_components
 node_modules
 
