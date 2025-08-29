@@ -7,7 +7,7 @@ export default function FaviconUpdater(){
     useEffect(()=>{
         if(configurations?.["system favicon"]){
             const link = document.querySelector("link[rel~='icon']");
-            if(link){
+            if(link instanceof HTMLLinkElement){
                 link.href = `${configUrl}/${configurations?.['system favicon']}`;
             }
         }

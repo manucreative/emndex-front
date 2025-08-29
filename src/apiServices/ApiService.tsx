@@ -26,19 +26,29 @@ export const fetchFeatures = async (): Promise<FeaturesData> => {
     }
 };
 
-interface ConfigResponse{
-    data: object
+// A single config entry
+interface ConfigItem {
+  key: string;
+  value: string;
+  file?: string;
 }
 
+// Response shape: category -> array of configs
+export interface ConfigResponse {
+  [category: string]: ConfigItem[];  // 👈 index signature
+}
+
+
 export const getConfig = async (): Promise<ConfigResponse | null> => {
-    try {
-      const response = await API.get<ConfigResponse>("/configurations");
-      return response.data;
-    } catch (error: any) {
-      console.error("Error fetching configurations:", error);
-      return null;
-    }
-  };
+  try {
+    const response = await API.get("/configurations");
+    return response.data as ConfigResponse;  // ensure correct type
+  } catch (error) {
+    console.error("Error fetching config:", error);
+    return null;
+  }
+};
+
 
   export interface ServiceResponse {
     success: string;
@@ -59,15 +69,21 @@ export const getConfig = async (): Promise<ConfigResponse | null> => {
     }
 }
 
-export const fetchServices = async(): Promise<ServiceResponse[]> =>{
-    try {
-      const response = await API.get("/getServices");
-      return response.data;
-    } catch (error) {
-      console.error("Error fetching services:", error);
-    return { data: [], message: "Error detching Services"};
-    }
-}
+type ServiceFetchResult = {
+  data: ServiceResponse[];
+  message: string;
+};
+
+export const fetchServices = async (): Promise<ServiceFetchResult> => {
+  try {
+    const response = await API.get("/getServices");
+    return { data: response.data as ServiceResponse[], message: "Success" };
+  } catch (error) {
+    console.error("Error fetching services:", error);
+    return { data: [], message: "Error fetching Services" };
+  }
+};
+
 
 export interface ProjectResponse {
   success?: string;
@@ -88,25 +104,35 @@ export interface ProjectResponse {
   
 }
 
-export const fetchAllProjects = async(): Promise<ProjectResponse[]> =>{
+type ProjectFetchResult = {
+  data: ProjectResponse[];
+  // message: string;
+};
+
+export const fetchAllProjects = async(): Promise<ProjectFetchResult[]> => {
   try {
     const response = await API.get("/projects");
-    return response.data;
+    return [{ data: response.data as ProjectResponse[]}];
   } catch (error) {
-    console.error("Error fetching services:", error);
-  return { data: [], message: "Error detching Services"};
+    console.error("Error fetching projects:", error);
+    return [{ data: []}];
   }
 }
 
-export const projectDetails = async(slug: any): Promise<ProjectResponse[]> =>{
+type ProjectDetailResult = {
+  data: ProjectResponse | null;
+  message: string;
+};
+
+export const projectDetails = async (slug: string): Promise<ProjectDetailResult> => {
   try {
     const response = await API.get(`/projects/${slug}`);
-    return response.data;
+    return { data: response.data as ProjectResponse, message: "Success" };
   } catch (error) {
-    console.error("Error fetching services:", error);
-  return { data: [], message: "Error detching Services"};
+    console.error("Error fetching project:", error);
+    return { data: null, message: "Error fetching project" };
   }
-}
+};
 
 interface awards {
   id: string;
@@ -215,7 +241,7 @@ export interface UserResponse {
   admin_image: string;
 }
 
-export const fetchUsers = async (): Promise<UserResponse> => {
+export const fetchUsers = async (): Promise<UserResponse[]> => {
   const response = await API.get('/getUsers');
-  return response.data;
+  return response.data; // should be an array
 };

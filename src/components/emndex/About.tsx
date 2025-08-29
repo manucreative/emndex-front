@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import GlowBoxesSection from "../common/GlowBoxesSection";
 import { motion } from "framer-motion";
 import { AboutusContent } from "../common/AboutusContent";

@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
         const [project, setProject] = useState<any | null>(null);
         const STORAGE_URL: string = import.meta.env.VITE_API_STORAGE_URL;
  const loadProjectDetails = async() =>{
-        projectDetails(slug)
+        projectDetails(slug ?? "")
               .then((response)=>{
                 if (response) {
                 setProject(response);

@@ -41,7 +41,12 @@ import { useEffect, useRef } from "react";
           }
         `;
         document.head.appendChild(style);
-        return () => document.head.removeChild(style);
+
+        return () => {
+          if (style && document.head.contains(style)) {
+            document.head.removeChild(style);
+          }
+        }
       }, []);
 
     if (!profile) {

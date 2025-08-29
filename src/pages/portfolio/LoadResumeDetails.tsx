@@ -1,7 +1,6 @@
 import { useParams } from "react-router";
 import PageBreadcrumb from "../../components/common/PageBreadcrumb";
 import PageMeta from "../../components/common/PageMeta";
-import Portfolio from "../../components/emndex/Portfolio";
 import { useConfig } from "../../context/ConfigProvider";
 import ResumeDetails from "../../components/emndex/ResumeDetails";
 

@@ -11,9 +11,9 @@ export default function LoadProjectDetails() {
   const { configurations } = useConfig();
   const { slug } = useParams();
 
-  const formattedTitle = slug
-    ? slug.replace(/-/g, " ").replace(/\b\w/g, (char) => char.toUpperCase())
-    : "Project Details";
+  // const formattedTitle = slug
+  //   ? slug.replace(/-/g, " ").replace(/\b\w/g, (char) => char.toUpperCase())
+  //   : "Project Details";
 
   return (
     <>

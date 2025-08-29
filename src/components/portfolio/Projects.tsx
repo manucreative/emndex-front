@@ -2,9 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { FaArrowRight } from "react-icons/fa";
 import { useNavigate } from "react-router";
-import { fetchAllProjects, ProjectResponse } from "../../apiServices/ApiService";
+import { fetchAllProjects} from "../../apiServices/ApiService";
 import Loader from "../common/Loader";
-import { Scale } from "lucide-react";
 
 // const projects = [
 //   { id: 1, title: "E-Commerce Platform", slug: "e-commerce-platform", image: "/assets/img/passprt.jpg" },
@@ -36,12 +35,12 @@ const Projects = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
-  const sectionRef = useRef<HTMLDivElement | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  // const [loading, setLoading] = useState(false);
+  // const sectionRef = useRef<HTMLDivElement | null>(null);
+  // const [isVisible, setIsVisible] = useState(false);
   const STORAGE_URL: string = import.meta.env.VITE_API_STORAGE_URL;
 
-  const [projects, setProjects] = useState<ProjectResponse[] | null>([]);
+  const [projects, setProjects] = useState<any[] | null>([]);
 
   // const loadProjects = async () => {
     
@@ -64,7 +63,7 @@ const Projects = () => {
   // }, []);
 
   useEffect(()=>{
-      setLoading(true);
+      // setLoading(true);
 
       fetchAllProjects()
       .then((response)=>{
@@ -76,7 +75,7 @@ const Projects = () => {
           console.error("Error fetching projects: ", error);
       })
         .finally(()=>{
-          setLoading(false)
+          // setLoading(false)
 
           console.log(projects)
     });

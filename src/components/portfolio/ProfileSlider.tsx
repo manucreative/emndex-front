@@ -22,7 +22,7 @@ const ProfileSlider: React.FC = () => {
         setIndex((prev) => (prev - 1 + profiles.length) % profiles.length)};
     
         const moveToResume = (id?: string, firstName?: string, lastName?: string, title?: string) => {
-          if (!id || !firstName || !lastName) return; // Prevent errors
+          if (!id || !firstName || !lastName || !title) return; // Prevent errors
       
           const resumeDetails = profiles.find((profile) => profile.id === id);
           if (resumeDetails) {

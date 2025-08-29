@@ -1,7 +1,5 @@
-import { motion } from "framer-motion";
-import Projects from "../portfolio/Projects";
+
 import ProfileSlider from "../portfolio/ProfileSlider";
-import { useState } from "react";
 import ContactForm from "../common/ContactForm";
 
 
