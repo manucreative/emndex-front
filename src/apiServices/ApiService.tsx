@@ -77,7 +77,7 @@ type ServiceFetchResult = {
 export const fetchServices = async (): Promise<ServiceFetchResult> => {
   try {
     const response = await API.get("/getServices");
-    return { data: response.data as ServiceResponse[], message: "Success" };
+    return response.data as ServiceFetchResult;
   } catch (error) {
     console.error("Error fetching services:", error);
     return { data: [], message: "Error fetching Services" };
