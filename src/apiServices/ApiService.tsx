@@ -127,7 +127,7 @@ type ProjectDetailResult = {
 export const projectDetails = async (slug: string): Promise<ProjectDetailResult> => {
   try {
     const response = await API.get(`/projects/${slug}`);
-    return { data: response.data as ProjectResponse, message: "Success" };
+    return response.data as ProjectDetailResult;
   } catch (error) {
     console.error("Error fetching project:", error);
     return { data: null, message: "Error fetching project" };

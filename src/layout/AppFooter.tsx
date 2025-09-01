@@ -93,8 +93,8 @@ function AppFooter() {
     {/* Copyright Section (Centered) */}
     <div className="col-span-1 sm:col-span-2 md:col-span-4 text-center mt-8 text-sm">
       <p>Copyright &copy; {currentDate} All rights reserved | 
-        <Link to="#" target="_blank" className="text-green-400 hover:underline"> Emndex Solution Ltd</Link> |
-        Developed by Emmanuel Kirui
+        <Link to="https://emndex.online" target="_blank" className="text-green-400 hover:underline"> Emndex Tech Services Ltd</Link> |
+        Developed by Emndex Tech Team
       </p>
     </div>
 
