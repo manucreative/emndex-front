@@ -84,7 +84,6 @@ export const fetchServices = async (): Promise<ServiceFetchResult> => {
   }
 };
 
-
 export interface ProjectResponse {
   success?: string;
   message?: string;

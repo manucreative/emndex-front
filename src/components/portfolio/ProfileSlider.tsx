@@ -21,16 +21,11 @@ const ProfileSlider: React.FC = () => {
         setDirection(-1)
         setIndex((prev) => (prev - 1 + profiles.length) % profiles.length)};
     
-        const moveToResume = (id?: string, firstName?: string, lastName?: string, title?: string) => {
-          if (!id || !firstName || !lastName || !title) return; // Prevent errors
-      
-          const resumeDetails = profiles.find((profile) => profile.id === id);
-          if (resumeDetails) {
-            // const bio = `${title}`.toLowerCase().replace(/\s+/g, "-");
+        const moveToResume = (id?: string, firstName?: string, lastName?: string) => {
+            if (!id || !firstName || !lastName) return;
             const slug = `${firstName}-${lastName}`.toLowerCase().replace(/\s+/g, "-");
-            navigate(`/home/team/${slug}`, { state: { profile: resumeDetails } });
-          }
-        };
+            navigate(`/home/team/${id}/${slug}`);
+          };
       
 
       useEffect(() => {
@@ -103,7 +98,7 @@ const ProfileSlider: React.FC = () => {
                   <h3 className="text-lg md:text-xl font-bold mt-2">{currentProfile.education?.map((edu)=>(edu.institution_name))}</h3>
                   <button
                     className="mt-4 px-4 py-2 md:px-6 md:py-3 neon-button relative z-10 pointer-events-auto"
-                    onClick={() => moveToResume(currentProfile.id, currentProfile.first_name, currentProfile.last_name, currentProfile.title)}
+                    onClick={() => moveToResume(currentProfile.id, currentProfile.first_name, currentProfile.last_name)}
                   >
                     Find My Profile
                   </button>

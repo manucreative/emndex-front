@@ -46,7 +46,7 @@ function App() {
             <Route path="/home/faqs" element={<LoadFaqs />} />
             <Route path="/home/portfolio" element={<LoadPortfolio />} />
             <Route path="/home/team" element={<LoadTeamMembers />} />
-            <Route path="/home/team/:slug" element={<LoadResumeDetails />} />
+            <Route path="/home/team/:id/:slug" element={<LoadResumeDetails />} />
 
             <Route path="/home/portfolio/projects/:slug" element={<LoadProjectDetails />} />
 

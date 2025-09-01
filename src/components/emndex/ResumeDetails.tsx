@@ -1,57 +1,83 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useLocation, useNavigate } from "react-router";
-import Loader from "../common/Loader";
+import { useEffect, useRef, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
-import { useEffect, useRef } from "react";
+import Loader from "../common/Loader"; // adjust path
 
-    function ResumeDetails(){
-        const STORAGE_URL: string = import.meta.env.VITE_API_STORAGE_URL;
+function ResumeDetails() {
+  const STORAGE_URL: string = import.meta.env.VITE_API_STORAGE_URL;
+  const { slug } = useParams(); // 👈 get slug from URL
+  const navigate = useNavigate();
+  const contentRef = useRef<HTMLDivElement>(null);
 
-        const location = useLocation();
-        const profile = location.state?.profile || null;
-        console.log(profile);
-        const contentRef = useRef<HTMLDivElement>(null);
-        const navigate = useNavigate();
+  const [profile, setProfile] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
-        const handlePrint = useReactToPrint({
-          contentRef,
-          documentTitle: `${profile?.first_name}_${profile?.last_name}_Resume`,
-          ignoreGlobalStyles: false,
-      });
+  const handlePrint = useReactToPrint({
+    contentRef,
+    documentTitle: profile
+      ? `${profile.first_name}_${profile.last_name}_Resume`
+      : "Resume",
+    ignoreGlobalStyles: false,
+  });
 
-      const trimContent = (text: string, wordLimit: number = 8): string => {
-        if (!text) return "";
-      
-        const words = text.split(" ");
-        return words.length > wordLimit
-          ? words.slice(0, wordLimit).join(" ") + "..."
-          : text;
-      };
-      
-      useEffect(()=>{
-        const style = document.createElement("style");
-        style.innerHTML = `
-          @media print {
-            @page { size: A4; margin: 1cm; }
-            .print-container {
-              display: grid !important;
-              grid-template-columns: 1fr 3fr !important;
-              gap: 1rem !important;
-            }
-          }
-        `;
-        document.head.appendChild(style);
+  const trimContent = (text: any, wordLimit: number = 8): string => {
+  if (!text) return "";
+  const str = String(text); // <--- force string
+  const words = str.split(" ");
+  return words.length > wordLimit
+    ? words.slice(0, wordLimit).join(" ") + "..."
+    : str;
+};
 
-        return () => {
-          if (style && document.head.contains(style)) {
-            document.head.removeChild(style);
-          }
+
+
+  useEffect(() => {
+    // inject print style
+    const style = document.createElement("style");
+    style.innerHTML = `
+      @media print {
+        @page { size: A4; margin: 1cm; }
+        .print-container {
+          display: grid !important;
+          grid-template-columns: 1fr 3fr !important;
+          gap: 1rem !important;
         }
-      }, []);
+      }
+    `;
+    document.head.appendChild(style);
 
-    if (!profile) {
-        return <Loader />;
+    return () => {
+      if (style && document.head.contains(style)) {
+        document.head.removeChild(style);
+      }
     };
+  }, []);
+
+  useEffect(() => {
+    if (!slug) return;
+
+    // fetch profile based on slug
+    const fetchProfile = async () => {
+      try {
+        const res = await fetch(`${STORAGE_URL}/api/team/${slug}`);
+        if (!res.ok) throw new Error("Failed to fetch profile");
+        const data = await res.json();
+        setProfile(data);
+      } catch (err) {
+        console.error(err);
+        navigate("/404"); // redirect if not found
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProfile();
+  }, [slug]);
+
+  if (loading) return <Loader />;
+
+  if (!profile) return <p>No profile found.</p>;
 
     return (
       <>
@@ -216,8 +242,9 @@ import { useEffect, useRef } from "react";
                           <div className="text-left px-4 mt-2">
                             <h3 className="text-md md:text-lg font-semibold underline">PROJECTS DONE</h3>
                             <ul className="list-decimal ml-4 text-sm">
-                              {profile.projects.map((project: any, i: any) => (
-                                  <li key={i} className="ml-6">{project.title}</li>
+                              {profile.projects?.map((project: any, i: any) => (
+                                
+                                  <li key={i} className="ml-6">{project?.title}</li>
                               ))}
                           </ul>
                         </div>
