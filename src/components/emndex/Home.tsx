@@ -46,8 +46,20 @@ function Home(){
       
     return (
         <div>
-            <section className="relative min-h-[500px] flex justify-center items-center bg-gradient-to-b from-[rgb(9,3,26)] via-[#08041d] to-[rgb(9,3,26)] text-white overflow-hidden">
-            
+            <section className="relative min-h-[800px] flex justify-center items-center bg-gradient-to-b from-[rgb(9,3,26)] via-[#08041d] to-[rgb(9,3,26)] text-white overflow-hidden">
+              <video
+                    className="absolute top-0 left-0 w-full h-full object-cover"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  >
+                    <source src="/assets/videos/videobg.webm" type="video/webm" />
+                    Your browser does not support the video tag.
+                  </video>
+
+                  {/* Dark overlay */}
+                  <div className="absolute inset-0 bg-black/40"></div>
                 <LaunchPageSection />
             </section>
 
