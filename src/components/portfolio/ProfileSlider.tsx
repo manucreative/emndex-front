@@ -105,7 +105,7 @@ const ProfileSlider: React.FC = () => {
                     className="mt-4 px-4 py-2 md:px-6 md:py-3 neon-button relative z-10 pointer-events-auto"
                     onClick={() => moveToResume(currentProfile.id, currentProfile.first_name, currentProfile.last_name)}
                   >
-                    Find My Profile
+                    OPEN RESUME (CV)
                   </button>
 
                 </div>

@@ -39,7 +39,10 @@ import { useEffect, useState } from "react";
             {/* ✅ Left Column (Title, Description, Skills, Deliverables) */}
             <div className="col-span-12 md:col-span-3 md:sticky top-0 self-start md:py-24">
               <h2 className="text-4xl font-bold neon-text">{project?.title}</h2>
-              <p className="text-lg text-gray-400 mt-2">{project?.description}</p>
+              <div
+                  className="text-lg text-gray-400 mt-2"
+                  dangerouslySetInnerHTML={{ __html: project?.description }}
+                ></div>
       
               <div className="mt-6">
                 <h3 className="text-2xl font-semibold neon-border">Skills Used</h3>
@@ -87,7 +90,10 @@ import { useEffect, useState } from "react";
       
               {/* About the Project */}
               <h3 className="text-2xl md:text-3xl font-semibold mt-8 neon-border">About the Project</h3>
-              <p className="text-gray-400 mt-2 text-lg md:text-xl" dangerouslySetInnerHTML={{ __html: project.aboutProject }}></p>
+              <div
+                className="text-gray-400 mt-2 text-lg md:text-xl space-y-3"
+                dangerouslySetInnerHTML={{ __html: project?.aboutProject }}
+              ></div>
             </div>
           </div>
         </section>
