@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { useConfig } from "../context/ConfigProvider";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFacebook, faTwitter, faInstagram, faDribbble } from "@fortawesome/free-brands-svg-icons";
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+
 function AppFooter() {
   const [currentDate, setCurrentDate] = useState(2025);
   const configUrl: string = import.meta.env.VITE_API_CONFIG_URL;
@@ -42,10 +46,10 @@ function AppFooter() {
       <p className="mt-4">{configurations?.["footer content"]}</p>
       {configurations?.["social media enabled"] === "yes" && (
         <div className="flex space-x-4 mt-4">
-        <a href="#" className="social-icon"><i className="fa fa-facebook"></i></a>
-        <a href="#" className="social-icon"><i className="fa fa-twitter"></i></a>
-        <a href="#" className="social-icon"><i className="fa fa-instagram"></i></a>
-        <a href="#" className="social-icon"><i className="fa fa-dribbble"></i></a>
+        <a href="#" className="social-icon"><FontAwesomeIcon icon={faFacebook} /></a>
+        <a href="#" className="social-icon"><FontAwesomeIcon icon={faTwitter} /></a>
+        <a href="#" className="social-icon"><FontAwesomeIcon icon={faInstagram} /></a>
+        <a href="#" className="social-icon"><FontAwesomeIcon icon={faDribbble} /></a>
       </div>
       )}
       
@@ -86,7 +90,8 @@ function AppFooter() {
       <h1 className="text-xl font-bold gradient-text">{configurations?.["subscribe content"]}</h1>
       <form className="mt-4 flex">
         <input type="email" placeholder="Email" className="w-full px-4 py-2 bg-gray-800 text-white border-none rounded-l-lg focus:outline-none"/>
-        <button type="submit" className="bg-green-500 px-4 py-2 rounded-r-lg hover:bg-green-600"><i className="fa fa-send-o"></i></button>
+        <button type="submit" className="bg-green-500 px-4 py-2 rounded-r-lg hover:bg-green-600">
+        <FontAwesomeIcon icon={faPaperPlane} /></button>
       </form>
     </div>
 
