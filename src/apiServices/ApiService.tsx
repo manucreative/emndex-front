@@ -103,35 +103,26 @@ export interface ProjectResponse {
   
 }
 
-type ProjectFetchResult = {
-  data: ProjectResponse[];
-  // message: string;
-};
-
-export const fetchAllProjects = async(): Promise<ProjectFetchResult[]> => {
+export const fetchAllProjects = async(): Promise<ProjectResponse[]> => {
   try {
     const response = await API.get("/projects");
-    return [{ data: response.data as ProjectResponse[]}];
+    return response.data as ProjectResponse[];
   } catch (error) {
     console.error("Error fetching projects:", error);
-    return [{ data: []}];
+    return [];
   }
-}
-
-type ProjectDetailResult = {
-  data: ProjectResponse | null;
-  message: string;
 };
 
-export const projectDetails = async (slug: string): Promise<ProjectDetailResult> => {
+export const projectDetails = async (slug: string): Promise<ProjectResponse | null> => {
   try {
     const response = await API.get(`/projects/${slug}`);
-    return response.data as ProjectDetailResult;
+    return response.data as ProjectResponse;
   } catch (error) {
     console.error("Error fetching project:", error);
-    return { data: null, message: "Error fetching project" };
+    return null;
   }
 };
+
 
 interface awards {
   id: string;

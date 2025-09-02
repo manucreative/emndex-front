@@ -22,10 +22,15 @@ const ProfileSlider: React.FC = () => {
         setIndex((prev) => (prev - 1 + profiles.length) % profiles.length)};
     
         const moveToResume = (id?: string, firstName?: string, lastName?: string) => {
-            if (!id || !firstName || !lastName) return;
+          if (!id || !firstName || !lastName) return; // Prevent errors
+      
+          const resumeDetails = profiles.find((profile) => profile.id === id);
+          if (resumeDetails) {
+            // const bio = `${title}`.toLowerCase().replace(/\s+/g, "-");
             const slug = `${firstName}-${lastName}`.toLowerCase().replace(/\s+/g, "-");
-            navigate(`/home/team/${id}/${slug}`);
-          };
+            navigate(`/home/team/${id}/${slug}`, { state: { profile: resumeDetails } });
+          }
+        };
       
 
       useEffect(() => {

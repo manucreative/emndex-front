@@ -2,16 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { FaArrowRight } from "react-icons/fa";
 import { useNavigate } from "react-router";
-import { fetchAllProjects} from "../../apiServices/ApiService";
+import { fetchAllProjects, ProjectResponse} from "../../apiServices/ApiService";
 import Loader from "../common/Loader";
-
-// const projects = [
-//   { id: 1, title: "E-Commerce Platform", slug: "e-commerce-platform", image: "/assets/img/passprt.jpg" },
-//   { id: 2, title: "Sacco Management System", slug: "sacco-management-system", image: "/assets/img/services/vector1-l.png" },
-//   { id: 3, title: "Food Ordering App", slug: "food-order-app", image: "/assets/img/services/teach.png" },
-//   { id: 4, title: "AI Data Analysis Tool", slug: "ai-data-analysis-tool", image: "/assets/img/footer2.jpg" },
-//   { id: 5, title: "Data Analysis Tool", slug: "data-analysis-tool", image: "/assets/img/footer2.jpg" },
-// ];
 
 // Animation Variants
 const containerVariants = {
@@ -40,7 +32,17 @@ const Projects = () => {
   // const [isVisible, setIsVisible] = useState(false);
   const STORAGE_URL: string = import.meta.env.VITE_API_STORAGE_URL;
 
-  const [projects, setProjects] = useState<any[] | null>([]);
+  const [projects, setProjects] = useState<ProjectResponse[]>([]);
+
+// useEffect(() => {
+//   fetchAllProjects()
+//     .then((response) => {
+//       if (response) {
+//         setProjects(response);
+//       }
+//     });
+// }, []);
+
 
   // const loadProjects = async () => {
     
@@ -62,24 +64,22 @@ const Projects = () => {
   //   return () => observer.disconnect();
   // }, []);
 
-  useEffect(()=>{
-      // setLoading(true);
-
-      fetchAllProjects()
-      .then((response)=>{
-        if (response) {
-        setProjects(response);
-        }
-      })
-      .catch((error)=>{
-          console.error("Error fetching projects: ", error);
-      })
-        .finally(()=>{
-          // setLoading(false)
-
-          console.log(projects)
+ useEffect(() => {
+  fetchAllProjects()
+    .then((response) => {
+      if (response && response) {
+        setProjects(response);  // ✅ Use .data
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching projects: ", error);
+    })
+    .finally(() => {
     });
-  },[]);
+}, []);
+
+      // console.log("Projects in state:", projects);
+
 
   if(!projects) return <Loader />
 
@@ -106,13 +106,13 @@ const Projects = () => {
         animate={isInView ? "show" : "hidden"}
       >
         <div className="grid grid-cols-2 md:grid-cols-3  gap-0">
-          {projects?.map((project, index) => (
+          {projects.map((project:any, index:any) => (
             <motion.div
-            whileHover={{scale: 1.01}}
-              key={project.id}
-              className={`relative group flex items-center py-12 justify-center border-[0.3px] text-white text-center cursor-pointer overflow-hidden transition-all duration-500 border-[rgba(20,255,255,0.99)]
-                ${index % 4 === 0 ? "col-span-2 row-span-2" : "col-span-1 row-span-1"}`}
-              variants={itemVariants} // Apply animation variants
+              key={index}
+              whileHover={{scale: 1.01}}
+                className={`relative group flex items-center py-12 justify-center border-[0.3px] text-white text-center cursor-pointer overflow-hidden transition-all duration-500 border-[rgba(20,255,255,0.99)]
+                  ${index % 4 === 0 ? "col-span-2 row-span-2" : "col-span-1 row-span-1"}`}
+                variants={itemVariants} // Apply animation variants
               
             >
               {/* Background Image with Dark Overlay */}
