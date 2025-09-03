@@ -8,7 +8,6 @@ export default function LoadServices() {
   const configUrl: string = import.meta.env.VITE_API_CONFIG_URL;
   const { configurations } = useConfig();
 
-  console.log(configurations?.["service meta title"]);
   return (
     <>
       <PageMeta

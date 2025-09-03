@@ -11,7 +11,7 @@ export default function LoadContactForm() {
     <>
       <PageMeta
         title={configurations?.['contact meta title']}
-        description={configurations?.['contact meta title']}
+        description={configurations?.['contact meta description']}
       />
       <PageBreadcrumb title="contact" bgImage={`url('${configUrl}/${configurations?.['contact banner']}')`}/>
       <div className="space-y-6">

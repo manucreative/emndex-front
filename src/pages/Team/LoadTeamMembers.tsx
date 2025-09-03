@@ -19,8 +19,8 @@ export default function LoadTeamMembers() {
   return (
     <>
       <PageMeta
-        title={`Emndex Solution Ltd | Emndex Team`}
-        description={configurations?.["service meta description"]}
+        title={configurations?.["team meta title"]}
+        description={configurations?.["team meta description"]}
       />
       <PageBreadcrumb title="team" bgImage={`url('${configUrl}/${configurations?.['service banner']}')`}/>
       <div className="">
