@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { useConfig } from "../context/ConfigProvider";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook, faTwitter, faInstagram, faDribbble, faWhatsapp, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faFacebook, faTwitter, faInstagram, faWhatsapp, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
 function AppFooter() {
@@ -50,7 +50,6 @@ function AppFooter() {
         <Link to={`https://facebook.com/${configurations?.["facebook username"]}`} className="social-icon"><FontAwesomeIcon icon={faFacebook} /></Link>
         <Link to={`https://x.com/${configurations?.["X username"]}`} className="social-icon"><FontAwesomeIcon icon={faTwitter} /></Link>
         <Link to={`https://instagram.com/${configurations?.["instagram username"]}`} className="social-icon"><FontAwesomeIcon icon={faInstagram} /></Link>
-        <Link to={`https://dribbble.com/${configurations?.["dribbble username"]}`} className="social-icon"><FontAwesomeIcon icon={faDribbble} /></Link>
         <Link to={`${configurations?.["whatsApp api"]}`} className="social-icon"><FontAwesomeIcon icon={faWhatsapp} /></Link>
         <Link to={`https://linkedin.com/in/${configurations?.["linkedin username"]}`} className="social-icon"><FontAwesomeIcon icon={faLinkedin} /></Link>
       </div>

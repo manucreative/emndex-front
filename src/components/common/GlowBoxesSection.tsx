@@ -29,8 +29,8 @@ const GlowBoxesSection = () => {
           
         }, []);
 
- const handleReadMore = (slug: string) =>{
-    navigate(`/home/services/${slug}`)
+ const handleReadMore = () =>{
+    navigate(`/home/services`)
  }
 
      return (
@@ -89,7 +89,7 @@ const GlowBoxesSection = () => {
                 {service.service_short_description.slice(0, 180)}...
                 <span
                   className="text-blue-500 cursor-pointer hover:underline"
-                  onClick={() => handleReadMore(service.slug)}
+                  onClick={() => handleReadMore()}
                 >
                   Continue Reading
                 </span>

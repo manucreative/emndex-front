@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { FaArrowRight } from "react-icons/fa";
 import { useNavigate } from "react-router";
-import { fetchAllProjects, ProjectResponse} from "../../apiServices/ApiService";
+import { fetchAllProjects} from "../../apiServices/ApiService";
 import Loader from "../common/Loader";
 
 // Animation Variants
@@ -32,7 +32,8 @@ const Projects = () => {
   // const [isVisible, setIsVisible] = useState(false);
   const STORAGE_URL: string = import.meta.env.VITE_API_STORAGE_URL;
 
-  const [projects, setProjects] = useState<ProjectResponse[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [projects, setProjects] = useState<any[]>([]);
 
 // useEffect(() => {
 //   fetchAllProjects()
@@ -106,7 +107,7 @@ const Projects = () => {
         animate={isInView ? "show" : "hidden"}
       >
         <div className="grid grid-cols-2 md:grid-cols-3  gap-0">
-          {projects.map((project:any, index:any) => (
+          {projects.map((project, index) => (
             <motion.div
               key={index}
               whileHover={{scale: 1.01}}

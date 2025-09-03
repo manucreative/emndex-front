@@ -35,8 +35,8 @@ function About(){
             // wow.init();
           }, []);
 
-          const handleReadMore = (slug: string) =>{
-              Navigate(`/home/services/${slug}`)
+          const handleReadMore = () =>{
+              Navigate(`/home/services`)
           }
 
           const homeContent = configurations?.["about content"] || "";
@@ -128,7 +128,7 @@ function About(){
                   {service.service_short_description.slice(0, 120)}...
                   <span
                     className="text-blue-500 cursor-pointer hover:underline"
-                    onClick={() => handleReadMore(service.slug)}
+                    onClick={() => handleReadMore()}
                   >
                     Continue Reading
                   </span>
