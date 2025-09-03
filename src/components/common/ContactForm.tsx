@@ -1,4 +1,7 @@
+import { useConfig } from "../../context/ConfigProvider";
+
 const ContactForm: React.FC = () => {
+const { configurations } = useConfig();
     return (
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -14,22 +17,23 @@ const ContactForm: React.FC = () => {
                 <i className="fa fa-map-marker text-pink-500 text-xl"></i>
                 <div>
                   <h5 className="gradient-text-2">Address</h5>
-                  <p className="text-white">Nairobi, Kenya, Ruaraka, Kasarani</p>
+                  <p className="text-white">{configurations?.["contact physical address"]}</p>
                 </div>
               </li>
               <li className="flex items-start space-x-3">
                 <i className="fa fa-phone text-green-400 text-xl"></i>
                 <div>
                   <h5 className="gradient-text-2">Hotline</h5>
-                  <p className="text-white">+254 45369555</p>
-                  <p className="text-white">+254 21827214</p>
+                  <p className="text-white">{configurations?.["footer phone1"]}</p>
+                  <p className="text-white">{configurations?.["footer phone2"]}</p>
                 </div>
               </li>
               <li className="flex items-start space-x-3">
                 <i className="fa fa-envelope text-blue-400 text-xl"></i>
                 <div>
                   <h5 className="gradient-text-2">Email</h5>
-                  <p className="text-white">support@emndex.com</p>
+                  <p className="text-white">{configurations?.["footer email1"]}</p>
+                  <p className="text-white">{configurations?.["footer email2"]}</p>
                 </div>
               </li>
             </ul>
