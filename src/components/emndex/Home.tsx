@@ -44,7 +44,7 @@ function Home(){
                     <section className="relative min-h-[600px] flex justify-center items-center bg-gradient-to-b from-[rgb(9,3,26)] via-[rgb(38,39,3)] to-[rgb(9,3,26)] text-white overflow-hidden md:px-4">
                     <div className="container mx-auto  py-8">
                     <div className="text-center mb-4">
-                        <h3 className="gradient-underline text-3xl font-bold">About Us</h3>
+                        <h3 className="gradient-underline text-3xl font-bold">Our Cababilities</h3>
                     </div>
                     <GlowBoxesSection/>
                     <hr className="neon-gradient-line mx-auto sm:w-1/8" />
