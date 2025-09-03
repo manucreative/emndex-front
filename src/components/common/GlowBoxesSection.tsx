@@ -34,10 +34,10 @@ const GlowBoxesSection: React.FC<GlowBoxProps> = ({services, children}) => {
       return (
           <div className="relative flex flex-col lg:flex-row justify-center w-full px-1 mx-auto py-5">
             {/* Left Side - Service Cards */}
-            { currentPage == "about" &&
+            { currentPage == "about" ||  currentPage == "home" &&
               children
               }
-            <div className="flex flex-col gap-12 w-full lg:w-1/2 px-4 py-4">
+            <div className="flex flex-col gap-12 w-full lg:w-1/2 px-0 md:px-4 py-4">
               {services.map((service: any, index: any) => (
                 <motion.div
                   key={service.id}
@@ -102,9 +102,7 @@ const GlowBoxesSection: React.FC<GlowBoxProps> = ({services, children}) => {
               ))}
             </div>
                     {/* Right Side - Image and Text */}
-              { currentPage == "home" &&
-              children
-              }
+              
         </div>
       );
 };

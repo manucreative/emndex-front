@@ -85,7 +85,7 @@ function Home(){
                 initial={{ opacity: 0, x: 100 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
-                className="lg:w-1/2 px-4 mt-6 lg:mt-0">
+                className="lg:w-1/2 px-0 md:px-4 mt-6 lg:mt-0">
               <AboutusContent bg={`url('${configUrl}/${configurations?.['about-bg']}')`} content={limitedContent} classData="bg-gradient-to-l from-[#7FDBFF] to-[#00f514] bg-clip-text text-transparent font-bold">
                 <button className="z-10 neon-button relative px-6 py-3 text-sm font-bold uppercase tracking-wider text-white bg-transparent rounded-full overflow-hidden transition-transform duration-300 hover:scale-105 mt-6 focus:outline-none"
                 onClick={()=> navigate("/home/about")}>
