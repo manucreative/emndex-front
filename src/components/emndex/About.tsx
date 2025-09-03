@@ -53,7 +53,7 @@ function About(){
     </div>
 
     {/* Responsive 2 Column Layout */}
-    <div className="grid grid-cols-1 gap-8 items-start">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
       
       {/* Left Column - About Content */}
       <motion.div
@@ -77,7 +77,7 @@ function About(){
       </motion.div>
 
       {/* Right Column - Services */}
-      <div className="grid grid-cols-1 gap-6 w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
         {services.map((service, index) => (
           <motion.div
             key={service.id}
