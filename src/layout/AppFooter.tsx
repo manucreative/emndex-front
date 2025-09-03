@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { useConfig } from "../context/ConfigProvider";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook, faTwitter, faInstagram, faDribbble, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import { faFacebook, faTwitter, faInstagram, faDribbble, faWhatsapp, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
 function AppFooter() {
@@ -33,8 +33,7 @@ function AppFooter() {
 
       {/* Footer Section */}
       <footer 
-  className="relative min-h-[400px] flex flex-col justify-center items-center bg-gradient-to-b from-[rgb(11,2,63)] via-[rgb(5,9,46)] to-[rgb(9,3,26)] text-white overflow-hidden px-4"
->
+  className="relative min-h-[400px] flex flex-col justify-center items-center bg-gradient-to-b from-[rgb(11,2,63)] via-[rgb(5,9,46)] to-[rgb(9,3,26)] text-white overflow-hidden px-4">
   <div className="container mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 py-4">
     
     {/* Company Info */}
@@ -48,11 +47,12 @@ function AppFooter() {
       <p className="mt-4">{configurations?.["footer content"]}</p>
       {configurations?.["social media enabled"] === "yes" && (
         <div className="flex space-x-4 mt-4">
-        <a href={configurations?.["facebook link"]} className="social-icon"><FontAwesomeIcon icon={faFacebook} /></a>
-        <a href={configurations?.["X link"]} className="social-icon"><FontAwesomeIcon icon={faTwitter} /></a>
-        <a href={configurations?.["instagram link"]} className="social-icon"><FontAwesomeIcon icon={faInstagram} /></a>
-        <a href={configurations?.["dribbble link"]} className="social-icon"><FontAwesomeIcon icon={faDribbble} /></a>
-        <a href={configurations?.["whatsApp link"]} className="social-icon"><FontAwesomeIcon icon={faWhatsapp} /></a>
+        <Link to={`https://facebook.com/${configurations?.["facebook username"]}`} className="social-icon"><FontAwesomeIcon icon={faFacebook} /></Link>
+        <Link to={`https://x.com/${configurations?.["X username"]}`} className="social-icon"><FontAwesomeIcon icon={faTwitter} /></Link>
+        <Link to={`https://instagram.com/${configurations?.["instagram username"]}`} className="social-icon"><FontAwesomeIcon icon={faInstagram} /></Link>
+        <Link to={`https://dribbble.com/${configurations?.["dribbble username"]}`} className="social-icon"><FontAwesomeIcon icon={faDribbble} /></Link>
+        <Link to={`${configurations?.["whatsApp api"]}`} className="social-icon"><FontAwesomeIcon icon={faWhatsapp} /></Link>
+        <Link to={`https://linkedin.com/in/${configurations?.["linkedin username"]}`} className="social-icon"><FontAwesomeIcon icon={faLinkedin} /></Link>
       </div>
       )}
       
