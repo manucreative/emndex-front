@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { useConfig } from "../context/ConfigProvider";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook, faTwitter, faInstagram, faDribbble } from "@fortawesome/free-brands-svg-icons";
+import { faFacebook, faTwitter, faInstagram, faDribbble, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
 function AppFooter() {
@@ -18,16 +18,18 @@ function AppFooter() {
   return (
     <div>
       {/* Banner Section */}
+      {configurations?.["footer show footer header"] === "yes" && (
       <section 
-  className="relative bg-cover bg-center py-16 text-center text-white z-0 h-[400px] " 
-        style={{ backgroundImage: `url('/assets/img/footer-banner.jpg')` }}>
-        <div className="container mx-auto px-6">
-          <h1 className="text-6xl font-bold gradient-text">{configurations?.["footer head"]}</h1>
-          <h4 className=" text-3xl mt-2">{configurations?.["footer sub head"]}</h4>
-          <hr className="neon-gradient-line mx-auto sm:w-1/4" />
-          <Link to="/home/contact" className="neon-border-button inline-block px-6 py-2 mt-10">Request a Quote</Link>
-        </div>
+          className="relative bg-cover bg-center py-16 text-center text-white z-0 h-[400px] " 
+                style={{ backgroundImage: `url('/assets/img/footer-banner.jpg')` }}>
+                <div className="container mx-auto px-6">
+                  <h1 className="text-4xl font-bold gradient-text">{configurations?.["footer head"]}</h1>
+                  <h4 className=" text-3xl mt-2">{configurations?.["footer sub head"]}</h4>
+                  <hr className="neon-gradient-line mx-auto sm:w-1/4" />
+                  <Link to="/home/contact" className="neon-border-button inline-block px-6 py-2 mt-10">Request a Quote</Link>
+                </div>
       </section>
+      )}
 
       {/* Footer Section */}
       <footer 
@@ -46,10 +48,11 @@ function AppFooter() {
       <p className="mt-4">{configurations?.["footer content"]}</p>
       {configurations?.["social media enabled"] === "yes" && (
         <div className="flex space-x-4 mt-4">
-        <a href="#" className="social-icon"><FontAwesomeIcon icon={faFacebook} /></a>
-        <a href="#" className="social-icon"><FontAwesomeIcon icon={faTwitter} /></a>
-        <a href="#" className="social-icon"><FontAwesomeIcon icon={faInstagram} /></a>
-        <a href="#" className="social-icon"><FontAwesomeIcon icon={faDribbble} /></a>
+        <a href={configurations?.["facebook link"]} className="social-icon"><FontAwesomeIcon icon={faFacebook} /></a>
+        <a href={configurations?.["X link"]} className="social-icon"><FontAwesomeIcon icon={faTwitter} /></a>
+        <a href={configurations?.["instagram link"]} className="social-icon"><FontAwesomeIcon icon={faInstagram} /></a>
+        <a href={configurations?.["dribbble link"]} className="social-icon"><FontAwesomeIcon icon={faDribbble} /></a>
+        <a href={configurations?.["whatsApp link"]} className="social-icon"><FontAwesomeIcon icon={faWhatsapp} /></a>
       </div>
       )}
       
