@@ -35,7 +35,6 @@ const LaunchPageSection: React.FC = () =>{
           </motion.h1>
           )}
       {configurations?.["home show-advert-banner"] === 'yes' && (
-        <>
             <motion.img 
               initial={{ opacity: 0, scale: 0.5 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -44,25 +43,6 @@ const LaunchPageSection: React.FC = () =>{
               src={`${configUrl}/${configurations?.['advert banner']}`} 
               alt="Vector Design" 
             />
-
-            <div className="w-full overflow-hidden flex items-center">
-              <motion.span 
-              className="px-3 bg-gradient-to-r from-green-400 to-pink-400 text-transparent bg-clip-text text-2xl justify-center"
-              animate={{
-                x: ["100%", "10%", "0%","-100%"],
-                // opacity: [0, 1, 1, 0],
-              }}
-              transition={{
-                times: [0, 0.2, 0.7, 1],
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              >
-                {configurations?.['slide text']}
-              </motion.span>
-            </div>
-            </>
           )}
           {configurations?.["home show-learn-btn"] === 'yes' && (
             <Link 
