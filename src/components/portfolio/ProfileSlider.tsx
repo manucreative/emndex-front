@@ -68,11 +68,11 @@ const ProfileSlider: React.FC = () => {
           </button>
 
           {/* Carousel */}
-          <div className="relative w-full max-w-full  overflow-hidden p-4">
+          <div className="relative w-full max-w-full  overflow-hidden md:p-4">
             <AnimatePresence custom={direction} mode="wait">
               <motion.div
                 key={currentProfile.id}
-                className="relative bg-[rgba(71,4,102,0.10)] border rounded-3xl border-transparent flex flex-col md:flex-row justify-center items-center text-center md:text-left p-6 overflow-hidden transition-shadow duration-300 cursor-pointer
+                className="relative bg-[rgba(71,4,102,0.10)] border rounded-3xl border-transparent flex flex-col md:flex-row justify-center items-center text-center md:text-left md:p-6 overflow-hidden transition-shadow duration-300 cursor-pointer
                   before:content-[''] before:absolute before:inset-0 before:rounded-lg before:-z-10 pointer-events-none z-0 transition-opacity duration-300"
                 style={{ 
                   boxShadow: "0 0 15px rgba(255, 20, 149, 0.53), 5px -5px 20px rgba(161, 20, 255, 0.24)",

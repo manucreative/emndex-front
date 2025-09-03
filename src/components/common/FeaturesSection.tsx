@@ -44,7 +44,7 @@ const FeaturesSection = () => {
   }, [isVisible]);
 
   return (
-    <div ref={sectionRef} className="container mx-auto px-6 py-12 max-w-7xl">
+    <div ref={sectionRef} className="container mx-auto md:px-6 py-12 max-w-7xl">
       {/* Title */}
       <div className="text-center text-white">
         <h3 className="gradient-underline text-3xl font-bold">Our Features</h3>
@@ -65,8 +65,8 @@ const FeaturesSection = () => {
             className={`z-10 flex flex-col md:flex-row ${
               index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
             } items-center justify-between ${
-              index % 2 === 0 ? "service-righ-bg" : "service-lef-bg"
-            } p-6 mt-10 rounded-3xl`}
+              index % 2 === 0 ? "service-right-bg" : "service-lef-bg"
+            } p-2 mt-10 rounded-3xl`}
           >
             {/* Feature Image */}
             <motion.img
